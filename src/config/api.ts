@@ -9,8 +9,11 @@ export const getApiBaseUrl = (): string => {
 	// Récupérer la valeur injectée par Vite au build
 	const envUrl = import.meta.env.VITE_API_URL;
 	
+	// Nettoyer immédiatement les backticks et autres caractères invalides
+	const cleanEnvUrl = typeof envUrl === 'string' ? envUrl.replace(/[`'"]/g, '').trim() : envUrl;
+	
 	// Gérer tous les cas possibles : undefined, null, chaîne vide, ou la chaîne littérale "undefined"
-	const urlValue = envUrl === 'undefined' || envUrl === 'null' || envUrl === undefined || envUrl === null || envUrl === '' ? null : envUrl;
+	const urlValue = cleanEnvUrl === 'undefined' || cleanEnvUrl === 'null' || cleanEnvUrl === undefined || cleanEnvUrl === null || cleanEnvUrl === '' ? null : cleanEnvUrl;
 	
 	// Si pas d'URL définie (production Netlify), utiliser l'origine actuelle (proxy)
 	if (!urlValue) {
@@ -25,7 +28,8 @@ export const getApiBaseUrl = (): string => {
 		// En développement, utiliser la variable d'environnement ou une valeur par défaut
 		// Note: Cette valeur ne devrait être utilisée qu'en développement local
 		// En production, utilisez toujours une chaîne vide pour le proxy Netlify
-		return process.env.VITE_API_URL || '';
+		const devUrl = process.env.VITE_API_URL || '';
+		return typeof devUrl === 'string' ? devUrl.replace(/[`'"]/g, '').trim() : '';
 	}
 	return urlValue;
 };
