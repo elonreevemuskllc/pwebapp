@@ -2,6 +2,13 @@
   command = "npm run build"
   publish = "dist"
 
+# Proxy API vers le backend HTTP (pour éviter Mixed Content)
+[[redirects]]
+  from = "/api/*"
+  to = "http://72.61.102.27:3002/api/:splat"
+  status = 200
+  force = true
+
 # Redirection SPA - toutes les routes vers index.html
 [[redirects]]
   from = "/*"

@@ -1,10 +1,19 @@
 // Configuration de l'API
 // Utilise la variable d'environnement VITE_API_URL ou une valeur par défaut
 // Gère le cas où la variable est undefined (problème Netlify)
+// En production (Netlify), utilise le proxy pour éviter Mixed Content
 const getApiUrlFromEnv = (): string => {
 	const envUrl = import.meta.env.VITE_API_URL;
+	
 	// Si undefined ou vide, utiliser la valeur par défaut
 	if (!envUrl || envUrl === 'undefined' || envUrl === 'null') {
+		// En production (Netlify), utiliser l'origine actuelle (proxy)
+		if (typeof window !== 'undefined') {
+			const hostname = window.location.hostname;
+			if (hostname.includes('netlify.app') || hostname.includes('netlify.com')) {
+				return window.location.origin;
+			}
+		}
 		return 'http://72.61.102.27:3002';
 	}
 	return envUrl;
