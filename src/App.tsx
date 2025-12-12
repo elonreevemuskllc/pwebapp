@@ -26,11 +26,15 @@ import UserSettings from './pages/admin/UserSettings';
 import ManagerDashboard from './pages/manager/Dashboard';
 import ManagerPayments from './pages/manager/Payments';
 import NotificationPrompt from './components/NotificationPrompt';
+import { useNotificationPolling } from './hooks/useNotificationPolling';
 
 function App() {
 	const [showBetaNotice, setShowBetaNotice] = useState(() => {
 		return localStorage.getItem('hideBetaNotice') !== 'true';
 	});
+
+	// Vérifier les notifications périodiquement
+	useNotificationPolling();
 
 	const handleDismiss = () => {
 		localStorage.setItem('hideBetaNotice', 'true');

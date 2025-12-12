@@ -1,6 +1,7 @@
 import express from 'express';
 import pool from '../db/connection';
 import { sendPaymentRequestConfirmation, sendPaymentRequestProcessed } from '../services/emailService';
+import { sendNotification } from '../services/notificationService';
 
 const router = express.Router();
 
@@ -431,6 +432,16 @@ router.put('/admin/payment-requests/:id/accept', async (req, res) => {
 		);
 
 		await connection.commit();
+
+		// Envoyer une notification
+		await sendNotification({
+			userId: request.user_id,
+			title: 'Paiement accepté ✅',
+			body: `Votre demande de paiement de ${parseFloat(request.amount)} ${request.crypto_type} a été acceptée.`,
+			icon: '/icon-192x192.png',
+			url: '/affiliate/payments',
+			type: 'payment'
+		});
 
 		res.json({ success: true });
 	} catch (error) {

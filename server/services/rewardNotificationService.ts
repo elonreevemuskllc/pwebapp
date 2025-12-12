@@ -63,6 +63,17 @@ async function checkRewardMilestones() {
               reward.name,
               reward.ftd_required
             );
+
+            // Envoyer une notification push
+            const { sendNotification } = await import('./notificationService');
+            await sendNotification({
+              userId: user.user_id,
+              title: '🎉 Récompense disponible !',
+              body: `Félicitations ! Vous avez atteint ${reward.ftd_required} FTD ce mois-ci. La récompense "${reward.name}" est maintenant disponible.`,
+              icon: '/icon-192x192.png',
+              url: '/affiliate/rewards',
+              type: 'reward'
+            });
           }
         }
       }
