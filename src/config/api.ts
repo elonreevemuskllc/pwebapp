@@ -22,19 +22,19 @@ export const getApiBaseUrl = (): string => {
 				return window.location.origin;
 			}
 		}
-		// En développement, utiliser l'URL par défaut
-		return 'http://72.61.102.27:3002';
+		// En développement, utiliser la variable d'environnement ou une valeur par défaut
+		// Note: Cette valeur ne devrait être utilisée qu'en développement local
+		// En production, utilisez toujours une chaîne vide pour le proxy Netlify
+		return process.env.VITE_API_URL || '';
 	}
 	return urlValue;
 };
 
-// URL de base de l'API (pour compatibilité)
-export const API_URL = getApiBaseUrl();
-
 // Fonction helper pour construire les URLs API
 export const getApiUrl = (endpoint: string): string => {
-	const baseUrl = API_URL.endsWith('/') ? API_URL.slice(0, -1) : API_URL;
-	const path = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
-	return `${baseUrl}${path}`;
+	const baseUrl = getApiBaseUrl();
+	const cleanBase = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+	const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+	return `${cleanBase}${cleanEndpoint}`;
 };
 
