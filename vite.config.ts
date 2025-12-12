@@ -7,8 +7,20 @@ export default defineConfig(({ mode }) => {
 	// Charger les variables d'environnement
 	const env = loadEnv(mode, process.cwd(), '');
 	
-	// Valeur par défaut pour VITE_API_URL
-	const apiUrl = env.VITE_API_URL || 'http://72.61.102.27:3002';
+	// Pour Netlify (production), utiliser une chaîne vide pour forcer l'utilisation du proxy
+	// Pour le développement, utiliser l'URL du backend
+	// Si VITE_API_URL est définie explicitement, l'utiliser
+	let apiUrl = env.VITE_API_URL;
+	
+	if (!apiUrl || apiUrl === 'undefined' || apiUrl === 'null') {
+		// En production (Netlify), utiliser chaîne vide pour proxy
+		// En développement, utiliser l'URL par défaut
+		if (mode === 'production') {
+			apiUrl = ''; // Chaîne vide = utiliser window.location.origin (proxy Netlify)
+		} else {
+			apiUrl = 'http://72.61.102.27:3002';
+		}
+	}
 	
 	return {
 		server: {

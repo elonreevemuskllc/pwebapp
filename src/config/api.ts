@@ -5,8 +5,8 @@
 const getApiUrlFromEnv = (): string => {
 	const envUrl = import.meta.env.VITE_API_URL;
 	
-	// Si undefined ou vide, utiliser la valeur par défaut
-	if (!envUrl || envUrl === 'undefined' || envUrl === 'null') {
+	// Si chaîne vide (production Netlify), utiliser l'origine actuelle (proxy)
+	if (envUrl === '' || !envUrl || envUrl === 'undefined' || envUrl === 'null') {
 		// En production (Netlify), utiliser l'origine actuelle (proxy)
 		if (typeof window !== 'undefined') {
 			const hostname = window.location.hostname;
@@ -14,6 +14,7 @@ const getApiUrlFromEnv = (): string => {
 				return window.location.origin;
 			}
 		}
+		// En développement, utiliser l'URL par défaut
 		return 'http://72.61.102.27:3002';
 	}
 	return envUrl;
