@@ -1,18 +1,25 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
-export default defineConfig({
-	server: {
-		host: "0.0.0.0",
-		port: 5174
-	},
-	define: {
-		'import.meta.env.VITE_API_URL': JSON.stringify(
-			process.env.VITE_API_URL || 'http://72.61.102.27:3002'
-		)
-	},
+export default defineConfig(({ mode }) => {
+	// Charger les variables d'environnement
+	const env = loadEnv(mode, process.cwd(), '');
+	
+	// Valeur par défaut pour VITE_API_URL
+	const apiUrl = env.VITE_API_URL || 'http://72.61.102.27:3002';
+	
+	return {
+		server: {
+			host: "0.0.0.0",
+			port: 5174
+		},
+		define: {
+			// Injecter la valeur dans le code au moment du build
+			'import.meta.env.VITE_API_URL': JSON.stringify(apiUrl),
+		},
+		envPrefix: 'VITE_',
 	plugins: [
 		react(),
 		VitePWA({
@@ -136,4 +143,5 @@ export default defineConfig({
 	optimizeDeps: {
 		exclude: ['lucide-react'],
 	},
+	};
 });
