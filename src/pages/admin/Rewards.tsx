@@ -7,6 +7,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { getNavItems } from '../../config/navigation';
 import { toast } from 'sonner';
 import { useTranslation } from '../../hooks/useTranslation';
+import { buildApiUrl } from '../../utils/api';
 
 interface Reward {
   id: number;
@@ -71,7 +72,7 @@ export default function Rewards() {
 
   const fetchRewards = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/rewards`, { credentials: 'include' });
+      const response = await fetch(buildApiUrl('/api/rewards'), { credentials: '))include' });
       if (response.ok) {
         const data = await response.json();
         setRewards(data);
@@ -83,7 +84,7 @@ export default function Rewards() {
 
   const fetchClaims = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/rewards/claims/list`, { credentials: 'include' });
+      const response = await fetch(buildApiUrl('/api/rewards/claims/list'), { credentials: '))include' });
       if (response.ok) {
         const data = await response.json();
         setClaims(data);
@@ -114,7 +115,7 @@ export default function Rewards() {
     return new Promise((resolve, reject) => {
       reader.onloadend = async () => {
         try {
-          const response = await fetch(`${import.meta.env.VITE_API_URL}/api/upload/image`, {
+          const response = await fetch(buildApiUrl('/api/upload/image'), {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
@@ -156,8 +157,8 @@ export default function Rewards() {
       };
 
       const url = editingReward
-        ? `${import.meta.env.VITE_API_URL}/api/rewards/${editingReward.id}`
-        : `${import.meta.env.VITE_API_URL}/api/rewards`;
+        ? buildApiUrl(`/api/rewards/${editingReward.id}`)
+        : buildApiUrl('/api/rewards');
 
       const response = await fetch(url, {
         method: editingReward ? 'PUT' : 'POST',
@@ -181,7 +182,7 @@ export default function Rewards() {
     if (!confirm(t('adminRewards.confirmDelete'))) return;
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/rewards/${id}`, {
+      const response = await fetch(buildApiUrl('/api/rewards/${id}'), {
         method: 'DELETE',
         credentials: 'include',
       });
@@ -212,7 +213,7 @@ export default function Rewards() {
     if (!noteModalData) return;
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/rewards/claims/${noteModalData.claimId}`, {
+      const response = await fetch(buildApiUrl('/api/rewards/claims/${noteModalData.claimId}'), {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -241,7 +242,7 @@ export default function Rewards() {
         value_euros: Number(reward.value_euros),
         ftd_required: Number(reward.ftd_required),
       });
-      setImagePreview(`${import.meta.env.VITE_API_URL}${reward.image_url}`);
+      setImagePreview(`${buildApiUrl('')}${reward.image_url}`);
     } else {
       setEditingReward(null);
       setFormData({
@@ -335,7 +336,7 @@ export default function Rewards() {
               >
                 <div className="relative aspect-square mb-4 rounded-xl overflow-hidden bg-muted">
                   <img
-                    src={`${import.meta.env.VITE_API_URL}${reward.image_url}`}
+                    src={`${buildApiUrl('')}${reward.image_url}`}
                     alt={reward.name}
                     className="w-full h-full object-cover"
                   />

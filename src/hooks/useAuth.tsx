@@ -19,13 +19,12 @@ export function useAuth() {
 
 	useEffect(() => {
 		verifySession();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const verifySession = async () => {
 		try {
-			const response = await fetch(buildApiUrl('/api/auth/verify-session'), {
-				credentials: 'include'
-			});
+			const response = await api.get('/api/auth/verify-session');
 
 			if (!response.ok) {
 				throw new Error('Session invalid');

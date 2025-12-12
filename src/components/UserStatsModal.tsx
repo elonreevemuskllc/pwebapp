@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { X, TrendingUp, DollarSign, Users, Activity, Calendar } from 'lucide-react';
 import { toast } from 'sonner';
 import { motion } from 'framer-motion';
+import { buildApiUrl } from '../utils/api';
 
 interface User {
 	id: number;
@@ -54,7 +55,7 @@ export default function UserStatsModal({ user, onClose }: UserStatsModalProps) {
 	const fetchDashboardStats = async () => {
 		try {
 			setLoadingDashboard(true);
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${user.id}/dashboard-stats`, {
+			const response = await fetch(buildApiUrl('/api/admin/user/${user.id}/dashboard-stats'), {
 				credentials: 'include'
 			});
 
@@ -73,7 +74,7 @@ export default function UserStatsModal({ user, onClose }: UserStatsModalProps) {
 	const fetchStatistics = async () => {
 		try {
 			setLoadingStats(true);
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${user.id}/statistics`, {
+			const response = await fetch(buildApiUrl('/api/admin/user/${user.id}/statistics'), {
 				credentials: 'include'
 			});
 

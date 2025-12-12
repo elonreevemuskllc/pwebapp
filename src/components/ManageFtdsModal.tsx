@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Search, Calendar, Trash2, AlertCircle } from 'lucide-react';
 import { toast } from 'sonner';
 import { useTranslation } from '../hooks/useTranslation';
+import { buildApiUrl } from '../utils/api';
 
 interface Ftd {
 	id: number;
@@ -46,7 +47,7 @@ export default function ManageFtdsModal({ isOpen, onClose, userId, onFtdDeleted 
 	const fetchFtds = async () => {
 		setLoading(true);
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/users/${userId}/ftds`, {
+			const response = await fetch(buildApiUrl('/api/admin/users/${userId}/ftds'), {
 				credentials: 'include'
 			});
 
@@ -105,7 +106,7 @@ export default function ManageFtdsModal({ isOpen, onClose, userId, onFtdDeleted 
 
 		setDeletingId(ftdId);
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/users/${userId}/ftds/${ftdId}`, {
+			const response = await fetch(buildApiUrl('/api/admin/users/${userId}/ftds/${ftdId}'), {
 				method: 'DELETE',
 				credentials: 'include'
 			});

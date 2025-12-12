@@ -37,7 +37,7 @@ Dans la console du navigateur, vous devriez voir :
    - `vite.config.ts` injecte `""` (chaîne vide)
    - Le code détecte Netlify et utilise `window.location.origin`
    - Les requêtes vont vers `https://prgweapp.netlify.app/api/*`
-   - Netlify proxy vers `http://72.61.102.27:3002/api/*`
+   - Netlify proxy vers `YOUR_BACKEND_URL/api/*`
 
 2. **Si VITE_API_URL = "undefined" (chaîne littérale)** :
    - Le code dans `src/config/api.ts` détecte `envUrl === 'undefined'`
@@ -51,4 +51,5 @@ Dans la console du navigateur, vous devriez voir :
 3. **Testez** - les erreurs devraient disparaître
 
 Si le problème persiste après avoir supprimé la variable, c'est que le cache du navigateur contient encore l'ancien code. Videz le cache ou faites un hard refresh (Ctrl+Shift+R).
+
 

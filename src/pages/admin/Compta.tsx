@@ -4,6 +4,7 @@ import Navbar from '../../components/Navbar';
 import { useAuth } from '../../hooks/useAuth';
 import { getNavItems } from '../../config/navigation';
 import { Download, Calendar, TrendingUp, TrendingDown, DollarSign, Users, ArrowUpDown, ArrowUp, ArrowDown } from 'lucide-react';
+import { buildApiUrl } from '../../utils/api';
 
 interface AffiliateComptaData {
   userId: number;
@@ -68,9 +69,9 @@ export default function Compta() {
         params.append('endDate', customEndDate);
       }
 
-      console.log('[COMPTA UI] Request URL:', `${import.meta.env.VITE_API_URL}/api/admin/compta?${params.toString()}`);
+      console.log('[COMPTA UI] Request URL:', `${buildApiUrl('/api/admin/compta')}?${params.toString()}`);
 
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/compta?${params}`, {
+      const response = await fetch(`${buildApiUrl('/api/admin/compta')}?${params}`, {
         credentials: 'include'
       });
 

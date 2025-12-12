@@ -4,7 +4,9 @@ import Navbar from '../../components/Navbar';
 import RewardsProgressBar from '../../components/RewardsProgressBar';
 import { useAuth } from '../../hooks/useAuth';
 import { getNavItems } from '../../config/navigation';
-import { TrendingUp, TrendingDown, Users, Euro, Percent, Calendar, ChevronDown, Wallet, Activity, DollarSign, Eye } from 'lucide-react';
+import { useNotifications } from '../../hooks/useNotifications';
+import { TrendingUp, TrendingDown, Users, Euro, Percent, Calendar, ChevronDown, Wallet, Activity, DollarSign, Eye, Bell, BellOff } from 'lucide-react';
+import { buildApiUrl } from '../../utils/api';
 
 interface Statistics {
 	totalFtds: number;
@@ -49,6 +51,7 @@ type Period = 'today' | 'week' | 'month' | 'all' | 'custom';
 
 export default function AffiliateDashboard() {
 	const { user, loading, logout } = useAuth();
+	const { permission, isSupported, requestPermission, isGranted } = useNotifications();
 	const [statistics, setStatistics] = useState<Statistics | null>(null);
 	const [allTimeStats, setAllTimeStats] = useState<Statistics | null>(null);
 	const [dailyRevenue, setDailyRevenue] = useState<DailyRevenue[]>([]);
@@ -96,7 +99,7 @@ export default function AffiliateDashboard() {
 	const fetchStatistics = async () => {
 		setLoadingStats(true);
 		try {
-			let url = `${import.meta.env.VITE_API_URL}/api/my-statistics?period=${selectedPeriod}`;
+			let url = `${buildApiUrl('/api/my-statistics')}?period=${selectedPeriod}`;
 			if (selectedPeriod === 'custom' && startDate && endDate) {
 				url += `&startDate=${startDate}&endDate=${endDate}`;
 			}
@@ -117,7 +120,7 @@ export default function AffiliateDashboard() {
 
 	const fetchAllTimeStats = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/my-statistics?period=all`, {
+			const response = await fetch(`${buildApiUrl('/api/my-statistics')}?period=all`, {
 				credentials: 'include'
 			});
 
@@ -132,7 +135,7 @@ export default function AffiliateDashboard() {
 
 	const fetchDailyRevenue = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/daily-revenue?days=30`, {
+			const response = await fetch(`${buildApiUrl('/api/daily-revenue')}?days=30`, {
 				credentials: 'include'
 			});
 
@@ -147,7 +150,7 @@ export default function AffiliateDashboard() {
 
 	const fetchRewards = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/rewards`, { credentials: 'include' });
+			const response = await fetch(buildApiUrl('/api/rewards'), { credentials: 'include' });
 			if (response.ok) {
 				const data = await response.json();
 				setRewards(data);
@@ -159,7 +162,7 @@ export default function AffiliateDashboard() {
 
 	const fetchMonthlyFtdCount = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/my-monthly-ftd-count`, {
+			const response = await fetch(buildApiUrl('/api/my-monthly-ftd-count'), {
 				credentials: 'include',
 			});
 			if (response.ok) {
@@ -173,7 +176,7 @@ export default function AffiliateDashboard() {
 
 	const fetchClaims = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/rewards/claims/list`, {
+			const response = await fetch(buildApiUrl('/api/rewards/claims/list'), {
 				credentials: 'include',
 			});
 			if (response.ok) {
@@ -187,7 +190,7 @@ export default function AffiliateDashboard() {
 
 	const fetchSalaryClaimStatus = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/salary-claims/today-status`, {
+			const response = await fetch(buildApiUrl('/api/salary-claims/today-status'), {
 				credentials: 'include',
 			});
 			if (response.ok) {
@@ -206,7 +209,7 @@ export default function AffiliateDashboard() {
 
 		setSubmittingSalaryClaim(true);
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/salary-claims/submit`, {
+			const response = await fetch(buildApiUrl('/api/salary-claims/submit'), {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				credentials: 'include',
@@ -393,6 +396,50 @@ export default function AffiliateDashboard() {
 									</h3>
 									<p className="text-muted-foreground">
 										Votre salaire du jour a été approuvé et versé sur votre balance
+									</p>
+								</div>
+							</div>
+						</motion.div>
+					)}
+
+					{!isGranted && isSupported && (
+						<motion.div
+							initial={{ opacity: 0, y: -10 }}
+							animate={{ opacity: 1, y: 0 }}
+							className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4 mb-6"
+						>
+							<div className="flex items-center justify-between">
+								<div className="flex items-center gap-3">
+									<Bell className="w-5 h-5 text-blue-500" />
+									<div>
+										<h3 className="font-semibold text-foreground">Activer les notifications</h3>
+										<p className="text-sm text-muted-foreground">
+											Recevez des alertes pour vos paiements et récompenses
+										</p>
+									</div>
+								</div>
+								<button
+									onClick={requestPermission}
+									className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-medium whitespace-nowrap"
+								>
+									Activer
+								</button>
+							</div>
+						</motion.div>
+					)}
+
+					{isGranted && (
+						<motion.div
+							initial={{ opacity: 0, y: -10 }}
+							animate={{ opacity: 1, y: 0 }}
+							className="bg-green-500/10 border border-green-500/30 rounded-xl p-4 mb-6"
+						>
+							<div className="flex items-center gap-3">
+								<Bell className="w-5 h-5 text-green-500" />
+								<div>
+									<h3 className="font-semibold text-foreground">Notifications activées</h3>
+									<p className="text-sm text-muted-foreground">
+										Vous recevrez des alertes pour vos paiements et récompenses
 									</p>
 								</div>
 							</div>

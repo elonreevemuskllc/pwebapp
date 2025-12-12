@@ -26,9 +26,7 @@ export default function Register() {
 	useEffect(() => {
 		const checkSession = async () => {
 		try {
-			const response = await fetch(buildApiUrl('/api/auth/verify-session'), {
-				credentials: 'include'
-			});
+			const response = await api.get('/api/auth/verify-session');
 
 				if (response.ok) {
 					const data = await response.json();

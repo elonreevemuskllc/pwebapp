@@ -4,6 +4,7 @@ import Navbar from '../../components/Navbar';
 import { useAuth } from '../../hooks/useAuth';
 import { getNavItems } from '../../config/navigation';
 import { BarChart3, TrendingUp, Users, Eye, Euro, Percent } from 'lucide-react';
+import { buildApiUrl } from '../../utils/api';
 
 interface TrackingCodeStats {
 	trackingCode: string;
@@ -40,7 +41,7 @@ export default function Statistics() {
 
 	const fetchDeal = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/my-deal`, {
+			const response = await fetch(buildApiUrl('/api/my-deal'), {
 				credentials: 'include'
 			});
 
@@ -56,7 +57,7 @@ export default function Statistics() {
 	const fetchStatistics = async () => {
 		setLoadingStats(true);
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/tracking-code-stats`, {
+			const response = await fetch(buildApiUrl('/api/tracking-code-stats'), {
 				credentials: 'include'
 			});
 

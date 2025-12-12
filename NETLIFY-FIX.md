@@ -6,7 +6,7 @@ L'erreur `GET https://prgweapp.netlify.app/undefined/api/auth/verify-session` é
 
 ## Solution appliquée
 
-1. **Valeur par défaut dans vite.config.ts** : Si `VITE_API_URL` n'est pas définie, elle utilisera `http://72.61.102.27:3002` par défaut.
+1. **Valeur par défaut dans vite.config.ts** : Si `VITE_API_URL` n'est pas définie, elle utilisera `YOUR_BACKEND_URL` par défaut.
 
 2. **Fichier .env.example** : Créé pour documenter les variables nécessaires.
 
@@ -17,16 +17,17 @@ L'erreur `GET https://prgweapp.netlify.app/undefined/api/auth/verify-session` é
 1. Allez dans **Netlify Dashboard** → Votre site → **Site settings** → **Environment variables**
 2. Ajoutez :
    - **Key** : `VITE_API_URL`
-   - **Value** : `http://72.61.102.27:3002`
+   - **Value** : `YOUR_BACKEND_URL`
 3. **Sauvegardez**
 4. **Redéployez** votre site (ou attendez le prochain push)
 
 ## Vérification
 
-Après le redéploiement, vérifiez dans la console du navigateur que les requêtes API pointent vers `http://72.61.102.27:3002` et non vers `undefined`.
+Après le redéploiement, vérifiez dans la console du navigateur que les requêtes API pointent vers `YOUR_BACKEND_URL` et non vers `undefined`.
 
 ## Fichiers modifiés
 
 - ✅ `vite.config.ts` - Ajout d'une valeur par défaut
 - ✅ `.env.example` - Documentation des variables d'environnement
+
 

@@ -1,46 +1,49 @@
 // Configuration de l'API
 // Utilise la variable d'environnement VITE_API_URL ou une valeur par défaut
 // Gère le cas où la variable est undefined (problème Netlify)
-// En production (Netlify), utilise le proxy pour éviter Mixed Content
+// En production (Netlify), utilise des URLs relatives pour le proxy
 
-// Fonction pour obtenir l'URL de l'API
+// Fonction pour obtenir l'URL de base de l'API
 // Cette fonction doit être utilisée partout au lieu de import.meta.env.VITE_API_URL
 export const getApiBaseUrl = (): string => {
 	// Récupérer la valeur injectée par Vite au build
 	let envUrl = import.meta.env.VITE_API_URL;
 	
-	// Convertir en string et nettoyer immédiatement les backticks et autres caractères invalides
+	// Log en mode développement pour debug
+	if (import.meta.env.MODE !== 'production') {
+		console.log('[API Config] Raw VITE_API_URL:', JSON.stringify(envUrl), 'Type:', typeof envUrl);
+	}
+	
+	// Convertir en string et nettoyer immédiatement les guillemets et autres caractères invalides
 	if (typeof envUrl !== 'string') {
 		envUrl = String(envUrl || '');
 	}
 	
-	// Nettoyer les backticks, guillemets, et l'encodage %60
-	let cleanEnvUrl = envUrl.replace(/[`'"]/g, '').replace(/%60/g, '').trim();
+	// Nettoyer les guillemets doubles et simples, backticks, et espaces
+	// Important: enlever les guillemets au début et à la fin si présents
+	let cleanEnvUrl = envUrl.trim().replace(/^["']|["']$/g, '').replace(/[`'"]/g, '').trim();
 	
-	// Si après nettoyage c'est vide ou contient encore des caractères invalides, considérer comme vide
-	// Vérifier les backticks et l'encodage %60 (sans utiliser la chaîne littérale %60%60 pour éviter qu'elle soit dans le build)
-	const hasBackticks = cleanEnvUrl.includes('`') || cleanEnvUrl.includes('%60');
-	if (cleanEnvUrl === '' || cleanEnvUrl === '``' || hasBackticks) {
-		cleanEnvUrl = '';
-	}
-	
-	// Gérer tous les cas possibles : undefined, null, chaîne vide, ou la chaîne littérale "undefined"
-	const urlValue = cleanEnvUrl === 'undefined' || cleanEnvUrl === 'null' || cleanEnvUrl === undefined || cleanEnvUrl === null || cleanEnvUrl === '' ? null : cleanEnvUrl;
-	
-	// Si pas d'URL définie (production Netlify), utiliser l'origine actuelle (proxy)
-	if (!urlValue) {
-		// En production (Netlify), utiliser l'origine actuelle (proxy)
-		if (typeof window !== 'undefined') {
-			const hostname = window.location.hostname;
-			// Détecter Netlify ou tout autre domaine de production
-			if (hostname.includes('netlify.app') || hostname.includes('netlify.com') || (hostname !== 'localhost' && hostname !== '127.0.0.1')) {
-				return window.location.origin;
-			}
+	// Si après nettoyage c'est vide, undefined, null, ou contient des caractères invalides, retourner chaîne vide
+	if (
+		cleanEnvUrl === '' ||
+		cleanEnvUrl === 'undefined' ||
+		cleanEnvUrl === 'null' ||
+		cleanEnvUrl.includes('`') ||
+		cleanEnvUrl.includes('%60') ||
+		cleanEnvUrl.includes('""')
+	) {
+		// Retourner chaîne vide = utiliser des URLs relatives (pour proxy Netlify)
+		if (import.meta.env.MODE !== 'production') {
+			console.log('[API Config] VITE_API_URL is empty/invalid, using relative URLs');
 		}
-		// En développement, retourner chaîne vide (sera géré par buildApiUrl)
 		return '';
 	}
-	return urlValue;
+	
+	// Retourner l'URL nettoyée (URL absolue)
+	if (import.meta.env.MODE !== 'production') {
+		console.log('[API Config] Using absolute base URL:', cleanEnvUrl);
+	}
+	return cleanEnvUrl;
 };
 
 // Fonction helper pour construire les URLs API

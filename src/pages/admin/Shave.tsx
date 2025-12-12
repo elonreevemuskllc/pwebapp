@@ -19,6 +19,7 @@ import ReactFlow, {
 import 'reactflow/dist/style.css';
 import { Plus } from 'lucide-react';
 import { useTranslation } from '../../hooks/useTranslation';
+import { buildApiUrl } from '../../utils/api';
 
 interface User {
 	id: number;
@@ -63,7 +64,7 @@ export default function Shave() {
 
 	const fetchGraphData = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/shaves/graph`, {
+			const response = await fetch(buildApiUrl('/api/admin/shaves/graph'), {
 				credentials: 'include',
 			});
 
@@ -275,7 +276,7 @@ export default function Shave() {
 
 			setActionLoading(true);
 
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/shaves`, {
+			const response = await fetch(buildApiUrl('/api/admin/shaves'), {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				credentials: 'include',

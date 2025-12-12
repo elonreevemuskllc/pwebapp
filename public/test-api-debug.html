@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug API URLs</title>
+    <style>
+        body { font-family: monospace; padding: 20px; background: #1a1a1a; color: #0f0; }
+        .test { margin: 10px 0; padding: 10px; background: #2a2a2a; border-left: 3px solid #0f0; }
+        .error { border-left-color: #f00; color: #f00; }
+        .success { border-left-color: #0f0; color: #0f0; }
+        pre { background: #000; padding: 10px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Debug API URLs</h1>
+    <div id="results"></div>
+    
+    <script type="module">
+        const results = document.getElementById('results');
+        
+        // Simuler import.meta.env
+        const mockImportMeta = {
+            env: {
+                VITE_API_URL: '',
+                MODE: 'development'
+            }
+        };
+        
+        // Copie exacte de httpClient.ts
+        let API_BASE_URL = mockImportMeta.env.VITE_API_URL || '';
+        
+        if (API_BASE_URL) {
+            API_BASE_URL = String(API_BASE_URL)
+                .trim()
+                .replace(/^["']|["']$/g, '')
+                .replace(/[`'"]/g, '')
+                .trim();
+            
+            if (
+                API_BASE_URL === '' ||
+                API_BASE_URL === 'undefined' ||
+                API_BASE_URL === 'null' ||
+                API_BASE_URL.includes('`') ||
+                API_BASE_URL.includes('%60') ||
+                API_BASE_URL.includes('""')
+            ) {
+                API_BASE_URL = '';
+            }
+        } else {
+            API_BASE_URL = '';
+        }
+        
+        function buildUrl(endpoint) {
+            const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+            
+            if (!API_BASE_URL || API_BASE_URL === '') {
+                return cleanEndpoint;
+            }
+            
+            const cleanBase = API_BASE_URL.trim().replace(/\/$/, '');
+            return `${cleanBase}${cleanEndpoint}`;
+        }
+        
+        // Tests
+        const tests = [
+            '/api/auth/check-email',
+            '/api/auth/verify-session',
+            '/api/notifications/unread',
+            '/api/auth/login'
+        ];
+        
+        let html = '<div class="test success">';
+        html += '<h2>✅ Configuration</h2>';
+        html += `<p>VITE_API_URL: ${JSON.stringify(mockImportMeta.env.VITE_API_URL)}</p>`;
+        html += `<p>API_BASE_URL après nettoyage: ${JSON.stringify(API_BASE_URL)}</p>`;
+        html += '</div>';
+        
+        html += '<div class="test"><h2>📋 Tests buildUrl()</h2>';
+        tests.forEach(endpoint => {
+            const url = buildUrl(endpoint);
+            const encoded = encodeURI(url);
+            const hasPercent22 = url.includes('%22') || encoded.includes('%22');
+            const className = hasPercent22 ? 'error' : 'success';
+            
+            html += `<div class="test ${className}">`;
+            html += `<strong>${endpoint}</strong><br>`;
+            html += `URL: <code>${JSON.stringify(url)}</code><br>`;
+            html += `Encodé: <code>${encoded}</code><br>`;
+            html += `Contient %22: ${hasPercent22 ? '❌ OUI' : '✅ NON'}`;
+            html += '</div>';
+        });
+        html += '</div>';
+        
+        // Test avec fetch réel
+        html += '<div class="test"><h2>🌐 Test fetch réel</h2>';
+        html += '<p>Test de la requête vers /api/auth/verify-session...</p>';
+        html += '<div id="fetch-result">En cours...</div>';
+        html += '</div>';
+        
+        results.innerHTML = html;
+        
+        // Test fetch réel
+        const testUrl = buildUrl('/api/auth/verify-session');
+        fetch(testUrl, { credentials: 'include' })
+            .then(res => {
+                const fetchResult = document.getElementById('fetch-result');
+                fetchResult.innerHTML = `
+                    <div class="success">
+                        ✅ Requête envoyée vers: <code>${testUrl}</code><br>
+                        Status: ${res.status}<br>
+                        URL finale: <code>${res.url}</code>
+                    </div>
+                `;
+            })
+            .catch(err => {
+                const fetchResult = document.getElementById('fetch-result');
+                fetchResult.innerHTML = `
+                    <div class="error">
+                        ❌ Erreur: ${err.message}<br>
+                        URL testée: <code>${testUrl}</code>
+                    </div>
+                `;
+            });
+    </script>
+</body>
+</html>

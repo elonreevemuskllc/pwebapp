@@ -4,7 +4,7 @@
 
 L'erreur "Failed to fetch" se produit parce que :
 - Votre site Netlify est en **HTTPS** (`https://prgweapp.netlify.app`)
-- Votre backend est en **HTTP** (`http://72.61.102.27:3002`)
+- Votre backend est en **HTTP** (`YOUR_BACKEND_URL`)
 - Les navigateurs **bloquent** les requêtes HTTP depuis une page HTTPS (Mixed Content)
 
 ## ✅ Solutions possibles
@@ -29,13 +29,13 @@ Netlify peut faire un proxy des requêtes API vers votre backend HTTP.
 # Proxy API vers le backend
 [[redirects]]
   from = "/api/*"
-  to = "http://72.61.102.27:3002/api/:splat"
+  to = "YOUR_BACKEND_URL/api/:splat"
   status = 200
   force = true
 ```
 
 **Puis modifiez `VITE_API_URL` sur Netlify :**
-- Au lieu de : `http://72.61.102.27:3002`
+- Au lieu de : `YOUR_BACKEND_URL`
 - Mettez : `https://prgweapp.netlify.app` (ou laissez vide pour utiliser l'origine)
 
 **Et dans le code, utilisez une URL relative :**
@@ -71,4 +71,5 @@ Si vous avez un domaine, configurez-le avec Cloudflare ou un autre service pour 
 ## 🚀 Solution rapide : Proxy Netlify
 
 Je vais modifier le code pour utiliser le proxy Netlify.
+
 

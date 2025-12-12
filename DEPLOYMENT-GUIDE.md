@@ -8,10 +8,10 @@ Créez un fichier `.env` en production avec :
 
 ```env
 # Base de données (production)
-DB_HOST=votre_host_db
-DB_USER=votre_user
-DB_PASSWORD=votre_password
-DB_NAME=elonwebsite
+DB_HOST=YOUR_DB_HOST
+DB_USER=YOUR_DB_USER
+DB_PASSWORD=YOUR_DB_PASSWORD
+DB_NAME=YOUR_DB_NAME
 DB_PORT=3306
 
 # Serveur

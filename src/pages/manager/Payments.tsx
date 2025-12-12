@@ -6,6 +6,7 @@ import { getNavItems } from '../../config/navigation';
 import { Wallet, TrendingUp, Calendar, CheckCircle, XCircle, Clock } from 'lucide-react';
 import { toast } from 'sonner';
 import PaymentRequestModal from '../../components/PaymentRequestModal';
+import { buildApiUrl } from '../../utils/api';
 
 interface Balance {
 	manager_ftd_earnings: number;
@@ -50,7 +51,7 @@ export default function ManagerPayments() {
 	const fetchBalance = async () => {
 		setLoadingBalance(true);
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/manager/balance`, {
+			const response = await fetch(buildApiUrl('/api/manager/balance'), {
 				credentials: 'include'
 			});
 
@@ -68,7 +69,7 @@ export default function ManagerPayments() {
 	const fetchRequests = async () => {
 		setLoadingRequests(true);
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/my-payment-requests`, {
+			const response = await fetch(buildApiUrl('/api/my-payment-requests'), {
 				credentials: 'include'
 			});
 

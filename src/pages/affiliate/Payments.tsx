@@ -6,6 +6,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { getNavItems } from '../../config/navigation';
 import { Wallet, DollarSign, Clock, Send, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 import { useTranslation } from '../../hooks/useTranslation';
+import { buildApiUrl } from '../../utils/api';
 
 interface Balance {
 	total_balance: number;
@@ -62,7 +63,7 @@ export default function Payments() {
 	const fetchBalance = async () => {
 		setLoadingBalance(true);
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/my-balance`, {
+			const response = await fetch(buildApiUrl('/api/my-balance'), {
 				credentials: 'include'
 			});
 
@@ -80,7 +81,7 @@ export default function Payments() {
 	const fetchPaymentRequests = async () => {
 		setLoadingRequests(true);
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/my-payment-requests`, {
+			const response = await fetch(buildApiUrl('/api/my-payment-requests'), {
 				credentials: 'include'
 			});
 
@@ -101,7 +102,7 @@ export default function Payments() {
 
 	const fetchDeal = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/my-deal`, {
+			const response = await fetch(buildApiUrl('/api/my-deal'), {
 				credentials: 'include'
 			});
 

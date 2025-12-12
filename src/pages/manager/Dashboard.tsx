@@ -3,7 +3,9 @@ import { motion } from 'framer-motion';
 import Navbar from '../../components/Navbar';
 import { useAuth } from '../../hooks/useAuth';
 import { getNavItems } from '../../config/navigation';
-import { TrendingUp, Users, DollarSign, Calendar, Clock } from 'lucide-react';
+import { TrendingUp, Users, DollarSign, Calendar, Clock, Bell } from 'lucide-react';
+import { useNotifications } from '../../hooks/useNotifications';
+import { buildApiUrl } from '../../utils/api';
 
 interface Affiliate {
 	id: number;
@@ -23,6 +25,7 @@ interface DashboardStats {
 
 export default function ManagerDashboard() {
 	const { user, loading, logout } = useAuth();
+	const { permission, isSupported, requestPermission, isGranted } = useNotifications();
 	const [stats, setStats] = useState<DashboardStats | null>(null);
 	const [loadingStats, setLoadingStats] = useState(true);
 	const [startDate, setStartDate] = useState('');
@@ -120,7 +123,7 @@ export default function ManagerDashboard() {
 	const fetchStats = async () => {
 		setLoadingStats(true);
 		try {
-			let url = `${import.meta.env.VITE_API_URL}/api/manager/dashboard-stats`;
+			let url = `${buildApiUrl('/api/manager/dashboard-stats')}`;
 
 			if (startDate && endDate) {
 				url += `?startDate=${startDate}&endDate=${endDate}`;
@@ -167,6 +170,50 @@ export default function ManagerDashboard() {
 
 			<div className="relative pt-24 px-4 pb-12">
 				<div className="max-w-7xl mx-auto py-8">
+					{!isGranted && isSupported && (
+						<motion.div
+							initial={{ opacity: 0, y: -10 }}
+							animate={{ opacity: 1, y: 0 }}
+							className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4 mb-6"
+						>
+							<div className="flex items-center justify-between">
+								<div className="flex items-center gap-3">
+									<Bell className="w-5 h-5 text-blue-500" />
+									<div>
+										<h3 className="font-semibold text-foreground">Activer les notifications</h3>
+										<p className="text-sm text-muted-foreground">
+											Recevez des alertes pour les paiements et les mises à jour importantes
+										</p>
+									</div>
+								</div>
+								<button
+									onClick={requestPermission}
+									className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-medium whitespace-nowrap"
+								>
+									Activer
+								</button>
+							</div>
+						</motion.div>
+					)}
+
+					{isGranted && (
+						<motion.div
+							initial={{ opacity: 0, y: -10 }}
+							animate={{ opacity: 1, y: 0 }}
+							className="bg-green-500/10 border border-green-500/30 rounded-xl p-4 mb-6"
+						>
+							<div className="flex items-center gap-3">
+								<Bell className="w-5 h-5 text-green-500" />
+								<div>
+									<h3 className="font-semibold text-foreground">Notifications activées</h3>
+									<p className="text-sm text-muted-foreground">
+										Vous recevrez des alertes pour les paiements et les mises à jour importantes
+									</p>
+								</div>
+							</div>
+						</motion.div>
+					)}
+
 					<motion.div
 						initial={{ opacity: 0, y: -20 }}
 						animate={{ opacity: 1, y: 0 }}

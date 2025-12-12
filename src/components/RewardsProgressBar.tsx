@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Lock, Check } from 'lucide-react';
+import { buildApiUrl } from '../utils/api';
 
 interface Reward {
 	id: number;
@@ -83,7 +84,7 @@ export default function RewardsProgressBar({ rewards, claims, ftdCount }: Reward
 														: 'border-border'
 												}`}>
 												<img
-													src={`${import.meta.env.VITE_API_URL}${reward.image_url}`}
+													src={`${buildApiUrl('')}${reward.image_url}`}
 													alt={reward.name}
 													className={`max-w-full max-h-full object-contain transition-all ${!isUnlocked ? 'opacity-40 grayscale' : ''
 														}`}

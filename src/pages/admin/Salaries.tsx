@@ -5,6 +5,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { getNavItems } from '../../config/navigation';
 import { DollarSign, Check, X, Clock, ExternalLink, Calendar, PauseCircle } from 'lucide-react';
 import { useTranslation } from '../../hooks/useTranslation';
+import { buildApiUrl } from '../../utils/api';
 
 interface SalaryClaim {
 	id: number;
@@ -44,7 +45,7 @@ export default function Salaries() {
 	const fetchClaims = async () => {
 		setLoadingClaims(true);
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/salary-claims`, {
+			const response = await fetch(buildApiUrl('/api/admin/salary-claims'), {
 				credentials: 'include'
 			});
 
@@ -70,7 +71,7 @@ export default function Salaries() {
 		try {
 			const endpoint = actionType === 'approve' ? 'approve' : actionType === 'postpone' ? 'postpone' : 'reject';
 			const response = await fetch(
-				`${import.meta.env.VITE_API_URL}/api/admin/salary-claims/${selectedClaim.id}/${endpoint}`,
+				buildApiUrl('/api/admin/salary-claims/${selectedClaim.id}/${endpoint}'),
 				{
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },

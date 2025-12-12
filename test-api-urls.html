@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test API URLs</title>
+</head>
+<body>
+    <h1>Test API URLs</h1>
+    <div id="results"></div>
+    <script type="module">
+        // Simuler import.meta.env.VITE_API_URL
+        const VITE_API_URL = '';
+        
+        // Fonction getApiBaseUrl (copie de config/api.ts)
+        function getApiBaseUrl() {
+            let envUrl = VITE_API_URL;
+            
+            if (typeof envUrl !== 'string') {
+                envUrl = String(envUrl || '');
+            }
+            
+            let cleanEnvUrl = envUrl.trim().replace(/^["']|["']$/g, '').replace(/[`'"]/g, '').trim();
+            
+            if (
+                cleanEnvUrl === '' ||
+                cleanEnvUrl === 'undefined' ||
+                cleanEnvUrl === 'null' ||
+                cleanEnvUrl.includes('`') ||
+                cleanEnvUrl.includes('%60') ||
+                cleanEnvUrl.includes('""')
+            ) {
+                return '';
+            }
+            
+            return cleanEnvUrl;
+        }
+        
+        // Fonction buildApiUrl (copie de utils/api.ts)
+        function buildApiUrl(endpoint) {
+            const baseUrl = getApiBaseUrl();
+            
+            if (!endpoint || endpoint === '') {
+                if (!baseUrl || baseUrl === '' || baseUrl.trim() === '') {
+                    return '';
+                }
+                return baseUrl.trim().replace(/\/$/, '');
+            }
+            
+            const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+            
+            if (!baseUrl || baseUrl === '' || baseUrl.trim() === '') {
+                return cleanEndpoint;
+            }
+            
+            const cleanBase = baseUrl.trim().replace(/\/$/, '');
+            return `${cleanBase}${cleanEndpoint}`;
+        }
+        
+        // Fonction buildUrl du httpClient
+        function buildUrl(endpoint) {
+            let API_BASE_URL = VITE_API_URL || '';
+            
+            if (API_BASE_URL) {
+                API_BASE_URL = String(API_BASE_URL)
+                    .trim()
+                    .replace(/^["']|["']$/g, '')
+                    .replace(/[`'"]/g, '')
+                    .trim();
+                
+                if (
+                    API_BASE_URL === '' ||
+                    API_BASE_URL === 'undefined' ||
+                    API_BASE_URL === 'null' ||
+                    API_BASE_URL.includes('`') ||
+                    API_BASE_URL.includes('%60') ||
+                    API_BASE_URL.includes('""')
+                ) {
+                    API_BASE_URL = '';
+                }
+            } else {
+                API_BASE_URL = '';
+            }
+            
+            const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+            
+            if (!API_BASE_URL || API_BASE_URL === '') {
+                return cleanEndpoint;
+            }
+            
+            const cleanBase = API_BASE_URL.trim().replace(/\/$/, '');
+            return `${cleanBase}${cleanEndpoint}`;
+        }
+        
+        // Tests
+        const results = document.getElementById('results');
+        const tests = [
+            { name: 'buildApiUrl("/api/auth/check-email")', func: () => buildApiUrl('/api/auth/check-email') },
+            { name: 'buildApiUrl("/api/auth/verify-session")', func: () => buildApiUrl('/api/auth/verify-session') },
+            { name: 'buildApiUrl("/api/notifications/unread")', func: () => buildApiUrl('/api/notifications/unread') },
+            { name: 'buildUrl("/api/auth/check-email")', func: () => buildUrl('/api/auth/check-email') },
+            { name: 'buildUrl("/api/auth/verify-session")', func: () => buildUrl('/api/auth/verify-session') },
+            { name: 'buildUrl("/api/notifications/unread")', func: () => buildUrl('/api/notifications/unread') },
+        ];
+        
+        let html = '<h2>Résultats des tests (VITE_API_URL = "")</h2><table border="1" cellpadding="10"><tr><th>Test</th><th>Résultat</th><th>Encodé</th><th>Contient %22?</th></tr>';
+        
+        tests.forEach(test => {
+            const result = test.func();
+            const encoded = encodeURI(result);
+            const hasPercent22 = result.includes('%22') || encoded.includes('%22');
+            const color = hasPercent22 ? 'red' : 'green';
+            html += `<tr style="color: ${color}">
+                <td>${test.name}</td>
+                <td>${JSON.stringify(result)}</td>
+                <td>${encoded}</td>
+                <td>${hasPercent22 ? '❌ OUI' : '✅ NON'}</td>
+            </tr>`;
+        });
+        
+        html += '</table>';
+        results.innerHTML = html;
+    </script>
+</body>
+</html>

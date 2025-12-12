@@ -6,6 +6,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { getNavItems } from '../../config/navigation';
 import { Receipt, Clock, CheckCircle, XCircle, AlertCircle, Plus } from 'lucide-react';
 import { useTranslation } from '../../hooks/useTranslation';
+import { buildApiUrl } from '../../utils/api';
 
 interface ExpenseReimbursement {
 	id: number;
@@ -39,7 +40,7 @@ export default function Expenses() {
 	const fetchExpenses = async () => {
 		setLoadingExpenses(true);
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/my-expense-reimbursements`, {
+			const response = await fetch(buildApiUrl('/api/my-expense-reimbursements'), {
 				credentials: 'include'
 			});
 

@@ -18,7 +18,7 @@ L'erreur `undefined/api/auth/verify-session` se produit parce que la variable `V
 1. Cliquez sur **Add a variable** (bouton en haut)
 2. Remplissez :
    - **Key** : `VITE_API_URL`
-   - **Value** : `http://72.61.102.27:3002`
+   - **Value** : `YOUR_BACKEND_URL`
    - **Scopes** : Cochez **Build** (IMPORTANT !) et **Deploy**
 3. Cliquez sur **Save**
 
@@ -41,14 +41,14 @@ Après le redéploiement :
 1. Ouvrez votre site Netlify
 2. Ouvrez la console du navigateur (F12)
 3. Vérifiez dans l'onglet **Network** que les requêtes API pointent vers :
-   - ✅ `http://72.61.102.27:3002/api/...`
+   - ✅ `YOUR_BACKEND_URL/api/...`
    - ❌ PAS `undefined/api/...`
 
 ## 📝 Note importante
 
 - La variable doit être définie avec le scope **Build** pour être disponible pendant le build
 - Si vous ne cochez que **Deploy**, la variable ne sera pas disponible au moment du build et vous aurez toujours "undefined"
-- Le code a maintenant une valeur par défaut (`http://72.61.102.27:3002`), mais il est préférable de la définir explicitement sur Netlify
+- Le code a maintenant une valeur par défaut (`YOUR_BACKEND_URL`), mais il est préférable de la définir explicitement sur Netlify
 
 ## 🐛 Si ça ne fonctionne toujours pas
 
@@ -56,4 +56,5 @@ Après le redéploiement :
 2. Vérifiez l'orthographe : `VITE_API_URL` (en majuscules)
 3. Vérifiez qu'il n'y a pas d'espaces avant/après la valeur
 4. Redéployez complètement (pas juste un cache clear)
+
 

@@ -6,6 +6,7 @@ import { useTranslation } from '../hooks/useTranslation';
 import usdtIcon from '../assets/crypto-icons/usdt.png';
 import usdcIcon from '../assets/crypto-icons/usdc.png';
 import ethIcon from '../assets/crypto-icons/eth.png';
+import { buildApiUrl } from '../utils/api';
 
 interface ExpenseRequestModalProps {
 	isOpen: boolean;
@@ -96,7 +97,7 @@ export default function ExpenseRequestModal({ isOpen, onClose, onSuccess }: Expe
 			formData.append('file', file);
 			formData.append('category', 'expense_attachment');
 
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/upload`, {
+			const response = await fetch(buildApiUrl('/api/upload'), {
 				method: 'POST',
 				credentials: 'include',
 				body: formData
@@ -172,7 +173,7 @@ export default function ExpenseRequestModal({ isOpen, onClose, onSuccess }: Expe
 
 		setIsSubmitting(true);
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/expense-reimbursements`, {
+			const response = await fetch(buildApiUrl('/api/expense-reimbursements'), {
 				method: 'POST',
 				credentials: 'include',
 				headers: {

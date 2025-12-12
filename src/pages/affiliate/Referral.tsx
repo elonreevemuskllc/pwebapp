@@ -4,6 +4,7 @@ import Navbar from '../../components/Navbar';
 import { useAuth } from '../../hooks/useAuth';
 import { getNavItems } from '../../config/navigation';
 import { Copy, CheckCircle, Users } from 'lucide-react';
+import { buildApiUrl } from '../../utils/api';
 
 interface ReferredUser {
 	id: number;
@@ -42,7 +43,7 @@ export default function ReferralPage() {
 	const fetchReferredUsers = async () => {
 		setLoadingReferrals(true);
 		try {
-			let url = `${import.meta.env.VITE_API_URL}/api/my-referrals`;
+			let url = `${buildApiUrl('/api/my-referrals')}`;
 			const params = new URLSearchParams();
 
 			if (period === 'today') {

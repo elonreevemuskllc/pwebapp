@@ -19,6 +19,7 @@ import {
 	Mail
 } from 'lucide-react';
 import { useTranslation } from '../../hooks/useTranslation';
+import { buildApiUrl } from '../../utils/api';
 
 interface Application {
 	id: number;
@@ -109,7 +110,7 @@ export default function Applications() {
 
 	const fetchApplications = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/applications`, {
+			const response = await fetch(buildApiUrl('/api/admin/applications'), {
 				credentials: 'include'
 			});
 
@@ -135,7 +136,7 @@ export default function Applications() {
 			const params = new URLSearchParams({ query });
 			if (role) params.append('role', role);
 
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/search-users?${params}`, {
+			const response = await fetch(buildApiUrl('/api/admin/search-users?${params}'), {
 				credentials: 'include'
 			});
 
@@ -156,7 +157,7 @@ export default function Applications() {
 
 		setActionLoading(true);
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/applications/${selectedApp.id}/reject`, {
+			const response = await fetch(buildApiUrl('/api/admin/applications/${selectedApp.id}/reject'), {
 				method: 'PUT',
 				headers: { 'Content-Type': 'application/json' },
 				credentials: 'include',
@@ -184,7 +185,7 @@ export default function Applications() {
 		try {
 			const filteredTrackingCodes = trackingCodesList.filter(tc => tc.code.trim() && tc.displayName.trim());
 
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/applications/${selectedApp.id}/accept`, {
+			const response = await fetch(buildApiUrl('/api/admin/applications/${selectedApp.id}/accept'), {
 				method: 'PUT',
 				headers: { 'Content-Type': 'application/json' },
 				credentials: 'include',
@@ -224,7 +225,7 @@ export default function Applications() {
 
 	const updateReferrer = async (appId: number, referrerId: number | null) => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/applications/${appId}/update-referrer`, {
+			const response = await fetch(buildApiUrl('/api/admin/applications/${appId}/update-referrer'), {
 				method: 'PUT',
 				headers: { 'Content-Type': 'application/json' },
 				credentials: 'include',
@@ -242,7 +243,7 @@ export default function Applications() {
 
 	const updateManager = async (appId: number, managerId: number | null) => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/applications/${appId}/update-manager`, {
+			const response = await fetch(buildApiUrl('/api/admin/applications/${appId}/update-manager'), {
 				method: 'PUT',
 				headers: { 'Content-Type': 'application/json' },
 				credentials: 'include',

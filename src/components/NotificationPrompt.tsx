@@ -11,14 +11,10 @@ export default function NotificationPrompt() {
 		// Afficher le prompt seulement si :
 		// - Les notifications sont supportées
 		// - La permission n'est pas déjà accordée
-		// - L'utilisateur n'a pas déjà refusé
 		if (isSupported && permission === 'default') {
 			// Attendre 3 secondes avant d'afficher
 			const timer = setTimeout(() => {
-				const hasSeenPrompt = localStorage.getItem('notification-prompt-seen');
-				if (!hasSeenPrompt) {
-					setShowPrompt(true);
-				}
+				setShowPrompt(true);
 			}, 3000);
 
 			return () => clearTimeout(timer);

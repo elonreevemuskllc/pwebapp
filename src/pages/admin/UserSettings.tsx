@@ -8,6 +8,7 @@ import ManageFtdsModal from '../../components/ManageFtdsModal';
 import { getNavItems } from '../../config/navigation';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Save, Lock, Unlock, Plus, Trash2, Edit2, X as XIcon, FileText, Eye, AlertTriangle } from 'lucide-react';
+import { buildApiUrl } from '../../utils/api';
 
 interface UserData {
 	id: number;
@@ -126,7 +127,7 @@ export default function UserSettings() {
 
 	const fetchAllUsers = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/users`, {
+			const response = await fetch(buildApiUrl('/api/admin/users'), {
 				credentials: 'include'
 			});
 			if (response.ok) {
@@ -142,12 +143,12 @@ export default function UserSettings() {
 		try {
 			setLoadingData(true);
 			const [userRes, pendingRes, dealRes, shavesRes, trackingCodesRes, expensesRes] = await Promise.all([
-				fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}`, { credentials: 'include' }),
-				fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}/pending-salary`, { credentials: 'include' }),
-				fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}/deal`, { credentials: 'include' }),
-				fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}/shaves`, { credentials: 'include' }),
-				fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}/tracking-codes`, { credentials: 'include' }),
-				fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}/total-expenses`, { credentials: 'include' })
+				fetch(buildApiUrl('/api/admin/user/${userId}'), { credentials: '))include' }),
+				fetch(buildApiUrl('/api/admin/user/${userId}/pending-salary'), { credentials: '))include' }),
+				fetch(buildApiUrl('/api/admin/user/${userId}/deal'), { credentials: '))include' }),
+				fetch(buildApiUrl('/api/admin/user/${userId}/shaves'), { credentials: '))include' }),
+				fetch(buildApiUrl('/api/admin/user/${userId}/tracking-codes'), { credentials: '))include' }),
+				fetch(buildApiUrl('/api/admin/user/${userId}/total-expenses'), { credentials: '))include' })
 			]);
 
 			if (userRes.ok) {
@@ -195,7 +196,7 @@ export default function UserSettings() {
 
 	const handleSaveField = async (field: string) => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}/update`, {
+			const response = await fetch(buildApiUrl('/api/admin/user/${userId}/update'), {
 				method: 'PUT',
 				headers: { 'Content-Type': 'application/json' },
 				credentials: 'include',
@@ -214,7 +215,7 @@ export default function UserSettings() {
 
 	const handleToggleFreeze = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}/freeze`, {
+			const response = await fetch(buildApiUrl('/api/admin/user/${userId}/freeze'), {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				credentials: 'include',
@@ -232,7 +233,7 @@ export default function UserSettings() {
 
 	const handleSalaryChange = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}/salary`, {
+			const response = await fetch(buildApiUrl('/api/admin/user/${userId}/salary'), {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				credentials: 'include',
@@ -254,7 +255,7 @@ export default function UserSettings() {
 		if (!confirm('Voulez-vous vraiment appliquer ce changement de commission fixe immédiatement ?')) return;
 
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}/salary/apply-now`, {
+			const response = await fetch(buildApiUrl('/api/admin/user/${userId}/salary/apply-now'), {
 				method: 'POST',
 				credentials: 'include'
 			});
@@ -270,7 +271,7 @@ export default function UserSettings() {
 
 	const handleSaveDeal = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}/deal`, {
+			const response = await fetch(buildApiUrl('/api/admin/user/${userId}/deal'), {
 				method: 'PUT',
 				headers: { 'Content-Type': 'application/json' },
 				credentials: 'include',
@@ -288,7 +289,7 @@ export default function UserSettings() {
 
 	const handleCreateShave = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/shaves`, {
+			const response = await fetch(buildApiUrl('/api/admin/shaves'), {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				credentials: 'include',
@@ -315,7 +316,7 @@ export default function UserSettings() {
 		if (!confirm('Voulez-vous vraiment révoquer ce shave ?')) return;
 
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/shaves/${shaveId}`, {
+			const response = await fetch(buildApiUrl('/api/admin/shaves/${shaveId}'), {
 				method: 'DELETE',
 				credentials: 'include'
 			});
@@ -333,7 +334,7 @@ export default function UserSettings() {
 		if (!editingShave) return;
 
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/shaves/${editingShave.id}`, {
+			const response = await fetch(buildApiUrl('/api/admin/shaves/${editingShave.id}'), {
 				method: 'PUT',
 				headers: { 'Content-Type': 'application/json' },
 				credentials: 'include',
@@ -366,7 +367,7 @@ export default function UserSettings() {
 		}
 
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}/tracking-codes`, {
+			const response = await fetch(buildApiUrl('/api/admin/user/${userId}/tracking-codes'), {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				credentials: 'include',
@@ -394,7 +395,7 @@ export default function UserSettings() {
 		if (!confirm('Voulez-vous vraiment supprimer ce tracking code ?')) return;
 
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}/tracking-codes/${codeId}`, {
+			const response = await fetch(buildApiUrl('/api/admin/user/${userId}/tracking-codes/${codeId}'), {
 				method: 'DELETE',
 				credentials: 'include'
 			});
@@ -415,7 +416,7 @@ export default function UserSettings() {
 		}
 
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/users/search?q=${encodeURIComponent(query)}`, {
+			const response = await fetch(buildApiUrl('/api/admin/users/search?q=${encodeURIComponent(query)}'), {
 				credentials: 'include'
 			});
 
@@ -440,7 +441,7 @@ export default function UserSettings() {
 		}
 
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}/referrer`, {
+			const response = await fetch(buildApiUrl('/api/admin/user/${userId}/referrer'), {
 				method: 'PUT',
 				headers: { 'Content-Type': 'application/json' },
 				credentials: 'include',
@@ -468,7 +469,7 @@ export default function UserSettings() {
 		if (!confirm('Voulez-vous vraiment retirer le parrain de cet utilisateur ?')) return;
 
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}/referrer`, {
+			const response = await fetch(buildApiUrl('/api/admin/user/${userId}/referrer'), {
 				method: 'DELETE',
 				credentials: 'include'
 			});
@@ -496,7 +497,7 @@ export default function UserSettings() {
 		}
 
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}/ftd`, {
+			const response = await fetch(buildApiUrl('/api/admin/user/${userId}/ftd'), {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				credentials: 'include',
@@ -524,7 +525,7 @@ export default function UserSettings() {
 
 	const fetchFtdAssignments = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}/ftd-assignments`, {
+			const response = await fetch(buildApiUrl('/api/admin/user/${userId}/ftd-assignments'), {
 				credentials: 'include'
 			});
 			if (response.ok) {
@@ -540,7 +541,7 @@ export default function UserSettings() {
 		if (!confirm('Voulez-vous vraiment supprimer ce FTD ?')) return;
 
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}/ftd/${ftdId}`, {
+			const response = await fetch(buildApiUrl('/api/admin/user/${userId}/ftd/${ftdId}'), {
 				method: 'DELETE',
 				credentials: 'include'
 			});
@@ -562,7 +563,7 @@ export default function UserSettings() {
 		}
 
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}/revshare`, {
+			const response = await fetch(buildApiUrl('/api/admin/user/${userId}/revshare'), {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				credentials: 'include',
@@ -589,7 +590,7 @@ export default function UserSettings() {
 
 	const fetchUserFiles = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}/files`, {
+			const response = await fetch(buildApiUrl('/api/admin/user/${userId}/files'), {
 				credentials: 'include'
 			});
 			if (response.ok) {
@@ -615,7 +616,7 @@ export default function UserSettings() {
 		try {
 			const reader = new FileReader();
 			reader.onloadend = async () => {
-				const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}/files`, {
+				const response = await fetch(buildApiUrl('/api/admin/user/${userId}/files'), {
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
 					credentials: 'include',
@@ -644,14 +645,14 @@ export default function UserSettings() {
 	};
 
 	const handleFileView = (fileId: number) => {
-		window.open(`${import.meta.env.VITE_API_URL}/api/admin/file/${fileId}`, '_blank');
+		window.open(buildApiUrl('/api/admin/file/${fileId}'), '))_blank');
 	};
 
 	const handleFileDelete = async (fileId: number) => {
 		if (!confirm('Voulez-vous vraiment supprimer ce fichier ?')) return;
 
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/file/${fileId}`, {
+			const response = await fetch(buildApiUrl('/api/admin/file/${fileId}'), {
 				method: 'DELETE',
 				credentials: 'include'
 			});
@@ -669,7 +670,7 @@ export default function UserSettings() {
 
 	const handleDeleteAccount = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/${userId}/delete`, {
+			const response = await fetch(buildApiUrl('/api/admin/user/${userId}/delete'), {
 				method: 'DELETE',
 				credentials: 'include'
 			});

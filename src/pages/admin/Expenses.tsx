@@ -6,6 +6,7 @@ import { getNavItems } from '../../config/navigation';
 import { Receipt, Check, X, AlertCircle, Clock, CheckCircle, XCircle, FileText, ExternalLink, PauseCircle } from 'lucide-react';
 import { toast } from 'sonner';
 import { useTranslation } from '../../hooks/useTranslation';
+import { buildApiUrl } from '../../utils/api';
 
 interface ExpenseReimbursement {
 	id: number;
@@ -56,7 +57,7 @@ export default function Expenses() {
 	const fetchRequests = async () => {
 		setLoadingRequests(true);
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/expense-reimbursements`, {
+			const response = await fetch(buildApiUrl('/api/admin/expense-reimbursements'), {
 				credentials: 'include'
 			});
 
@@ -91,7 +92,7 @@ export default function Expenses() {
 		setProcessingRequest(true);
 		try {
 			const response = await fetch(
-				`${import.meta.env.VITE_API_URL}/api/admin/expense-reimbursements/${modal.request.id}/accept`,
+				buildApiUrl('/api/admin/expense-reimbursements/${modal.request.id}/accept'),
 				{
 					method: 'PUT',
 					credentials: 'include'
@@ -122,7 +123,7 @@ export default function Expenses() {
 		setProcessingRequest(true);
 		try {
 			const response = await fetch(
-				`${import.meta.env.VITE_API_URL}/api/admin/expense-reimbursements/${modal.request.id}/decline`,
+				buildApiUrl('/api/admin/expense-reimbursements/${modal.request.id}/decline'),
 				{
 					method: 'PUT',
 					credentials: 'include',
@@ -154,7 +155,7 @@ export default function Expenses() {
 		setProcessingRequest(true);
 		try {
 			const response = await fetch(
-				`${import.meta.env.VITE_API_URL}/api/admin/expense-reimbursements/${modal.request.id}/postpone`,
+				buildApiUrl('/api/admin/expense-reimbursements/${modal.request.id}/postpone'),
 				{
 					method: 'PUT',
 					credentials: 'include',
@@ -371,7 +372,7 @@ export default function Expenses() {
 												<td className="px-2 py-3 text-center">
 													{request.attachment_file_id ? (
 														<a
-															href={`${import.meta.env.VITE_API_URL}/uploads/expense_attachment/${request.stored_filename}`}
+															href={`${buildApiUrl('')}/uploads/expense_attachment/${request.stored_filename}`}
 															target="_blank"
 															rel="noopener noreferrer"
 															className="inline-flex items-center justify-center p-1.5 text-primary hover:bg-primary/10 rounded transition-colors"
@@ -495,7 +496,7 @@ export default function Expenses() {
 										<div className="flex flex-col gap-1 pt-2 border-t border-border">
 											<span className="text-sm text-muted-foreground">{t('adminExpenses.modal.attachment')}:</span>
 											<a
-												href={`${import.meta.env.VITE_API_URL}/uploads/expense_attachment/${modal.request.stored_filename}`}
+												href={`${buildApiUrl('')}/uploads/expense_attachment/${modal.request.stored_filename}`}
 												target="_blank"
 												rel="noopener noreferrer"
 												className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"

@@ -6,6 +6,7 @@ import { getNavItems } from '../../config/navigation';
 import { TrendingUp, Clock, Check, X, AlertCircle, PauseCircle } from 'lucide-react';
 import { toast } from 'sonner';
 import { useTranslation } from '../../hooks/useTranslation';
+import { buildApiUrl } from '../../utils/api';
 
 interface PaymentRequest {
 	id: number;
@@ -62,7 +63,7 @@ export default function Payments() {
 	const fetchRequests = async () => {
 		setLoadingRequests(true);
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/payment-requests`, {
+			const response = await fetch(buildApiUrl('/api/admin/payment-requests'), {
 				credentials: 'include'
 			});
 
@@ -84,7 +85,7 @@ export default function Payments() {
 	const fetchStats = async () => {
 		setLoadingStats(true);
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/payment-stats`, {
+			const response = await fetch(buildApiUrl('/api/admin/payment-stats'), {
 				credentials: 'include'
 			});
 
@@ -120,7 +121,7 @@ export default function Payments() {
 		setProcessingRequest(true);
 		try {
 			const response = await fetch(
-				`${import.meta.env.VITE_API_URL}/api/admin/payment-requests/${modal.request.id}/accept`,
+				buildApiUrl('/api/admin/payment-requests/${modal.request.id}/accept'),
 				{
 					method: 'PUT',
 					credentials: 'include'
@@ -152,7 +153,7 @@ export default function Payments() {
 		setProcessingRequest(true);
 		try {
 			const response = await fetch(
-				`${import.meta.env.VITE_API_URL}/api/admin/payment-requests/${modal.request.id}/decline`,
+				buildApiUrl('/api/admin/payment-requests/${modal.request.id}/decline'),
 				{
 					method: 'PUT',
 					credentials: 'include',
@@ -185,7 +186,7 @@ export default function Payments() {
 		setProcessingRequest(true);
 		try {
 			const response = await fetch(
-				`${import.meta.env.VITE_API_URL}/api/admin/payment-requests/${modal.request.id}/postpone`,
+				buildApiUrl('/api/admin/payment-requests/${modal.request.id}/postpone'),
 				{
 					method: 'PUT',
 					credentials: 'include',

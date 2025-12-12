@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, DollarSign, Wallet, Network, AlertCircle, Check, Users, Percent, Banknote, Coins } from 'lucide-react';
 import { toast } from 'sonner';
 import { useTranslation } from '../hooks/useTranslation';
+import { buildApiUrl } from '../utils/api';
 
 interface PaymentRequestModalProps {
 	isOpen: boolean;
@@ -137,7 +138,7 @@ export default function PaymentRequestModal({ isOpen, onClose, ftdReferralBalanc
 
 		setLoading(true);
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/payment-requests`, {
+			const response = await fetch(buildApiUrl('/api/payment-requests'), {
 				method: 'POST',
 				credentials: 'include',
 				headers: {

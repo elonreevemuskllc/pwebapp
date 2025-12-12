@@ -8,6 +8,7 @@ import { Search, Settings, BarChart3 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import UserStatsModal from '../../components/UserStatsModal';
 import { useTranslation } from '../../hooks/useTranslation';
+import { buildApiUrl } from '../../utils/api';
 
 interface User {
 	id: number;
@@ -60,7 +61,7 @@ export default function UsersPage() {
 	const fetchUsers = async () => {
 		try {
 			setLoadingUsers(true);
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/users`, {
+			const response = await fetch(buildApiUrl('/api/admin/users'), {
 				credentials: 'include'
 			});
 
@@ -79,7 +80,7 @@ export default function UsersPage() {
 
 	const fetchBirthdays = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/users/birthdays`, {
+			const response = await fetch(buildApiUrl('/api/admin/users/birthdays'), {
 				credentials: 'include'
 			});
 

@@ -5,33 +5,44 @@ import { getApiBaseUrl } from '../config/api';
 /**
  * Construit une URL API complète
  * @param endpoint - Le endpoint API (ex: '/api/auth/login' ou 'api/auth/login')
- * @returns L'URL complète de l'API
+ * @returns L'URL complète de l'API (relative si VITE_API_URL est vide, absolue sinon)
  */
 export const buildApiUrl = (endpoint: string): string => {
 	const baseUrl = getApiBaseUrl();
 	
-	// Convertir en string et nettoyer agressivement
-	let cleanBase = String(baseUrl || '');
-	
-	// Nettoyer les backticks, guillemets, et l'encodage %60
-	cleanBase = cleanBase.replace(/[`'"]/g, '').replace(/%60/g, '').trim();
-	
-	// Si la base contient encore des caractères invalides, la vider complètement
-	// Vérifier les backticks et l'encodage %60 (sans utiliser la chaîne littérale %60%60)
-	const hasInvalidChars = cleanBase.includes('`') || cleanBase.includes('%60');
-	if (cleanBase === '' || cleanBase === '``' || hasInvalidChars) {
-		cleanBase = '';
+	// Cas spécial: endpoint vide = retourner juste la base URL (pour les images/ressources)
+	if (!endpoint || endpoint === '') {
+		if (!baseUrl || baseUrl === '' || baseUrl.trim() === '') {
+			// Pas de base URL = retourner chaîne vide (sera utilisé comme URL relative)
+			return '';
+		}
+		// Retourner la base URL nettoyée
+		return baseUrl.trim().replace(/\/$/, '');
 	}
 	
-	const finalBase = cleanBase.endsWith('/') ? cleanBase.slice(0, -1) : cleanBase;
+	// Normaliser l'endpoint pour qu'il commence toujours par /
 	const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
 	
-	// Si la base est vide (production Netlify), retourner juste l'endpoint
-	if (!finalBase || finalBase === '' || finalBase === '``') {
+	// Si baseUrl est vide ou invalide, retourner juste l'endpoint relatif
+	// Cela permet au navigateur d'utiliser l'origine actuelle (proxy Netlify)
+	if (!baseUrl || baseUrl === '' || baseUrl.trim() === '') {
+		// Log en mode développement pour debug
+		if (import.meta.env.MODE !== 'production') {
+			console.log('[API] Using relative URL:', cleanEndpoint);
+		}
 		return cleanEndpoint;
 	}
 	
-	return `${finalBase}${cleanEndpoint}`;
+	// Nettoyer la base URL (enlever slash final si présent)
+	const cleanBase = baseUrl.trim().replace(/\/$/, '');
+	
+	// Log en mode développement pour debug
+	if (import.meta.env.MODE !== 'production') {
+		console.log('[API] Using absolute base URL:', cleanBase);
+	}
+	
+	// Retourner l'URL absolue
+	return `${cleanBase}${cleanEndpoint}`;
 };
 
 /**

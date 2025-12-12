@@ -1,6 +1,6 @@
 import { useEffect, useCallback } from 'react';
 import { useNotifications } from './useNotifications';
-import { buildApiUrl } from '../utils/api';
+import { api } from '../utils/httpClient';
 
 /**
  * Hook pour vérifier périodiquement les nouvelles notifications depuis le serveur

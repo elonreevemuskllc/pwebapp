@@ -7,6 +7,7 @@ import RewardsProgressBar from '../../components/RewardsProgressBar';
 import { useAuth } from '../../hooks/useAuth';
 import { getNavItems } from '../../config/navigation';
 import { toast } from 'sonner';
+import { buildApiUrl } from '../../utils/api';
 
 interface Reward {
   id: number;
@@ -68,7 +69,7 @@ export default function Rewards() {
 
   const fetchRewards = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/rewards`, { credentials: 'include' });
+      const response = await fetch(buildApiUrl('/api/rewards'), { credentials: '))include' });
       if (response.ok) {
         const data = await response.json();
         setRewards(data);
@@ -82,7 +83,7 @@ export default function Rewards() {
 
   const fetchClaims = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/rewards/claims/list`, {
+      const response = await fetch(buildApiUrl('/api/rewards/claims/list'), {
         credentials: 'include',
       });
       if (response.ok) {
@@ -96,7 +97,7 @@ export default function Rewards() {
 
   const fetchFtdCount = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/my-monthly-ftd-count`, {
+      const response = await fetch(buildApiUrl('/api/my-monthly-ftd-count'), {
         credentials: 'include',
       });
       if (response.ok) {
@@ -146,7 +147,7 @@ export default function Rewards() {
     if (!selectedReward) return;
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/rewards/claims`, {
+      const response = await fetch(buildApiUrl('/api/rewards/claims'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -231,7 +232,7 @@ export default function Rewards() {
             >
               <div className="relative aspect-square bg-muted">
                 <img
-                  src={`${import.meta.env.VITE_API_URL}${reward.image_url}`}
+                  src={`${buildApiUrl('')}${reward.image_url}`}
                   alt={reward.name}
                   className={`w-full h-full object-cover ${
                     !status.unlocked && !status.claimed ? 'opacity-30' : ''
