@@ -17,7 +17,9 @@ export const buildApiUrl = (endpoint: string): string => {
 	cleanBase = cleanBase.replace(/[`'"]/g, '').replace(/%60/g, '').trim();
 	
 	// Si la base contient encore des caractères invalides, la vider complètement
-	if (cleanBase === '' || cleanBase === '``' || cleanBase === '%60%60' || cleanBase.includes('`') || cleanBase.includes('%60')) {
+	// Vérifier les backticks et l'encodage %60 (sans utiliser la chaîne littérale %60%60)
+	const hasInvalidChars = cleanBase.includes('`') || cleanBase.includes('%60');
+	if (cleanBase === '' || cleanBase === '``' || hasInvalidChars) {
 		cleanBase = '';
 	}
 	
@@ -25,7 +27,7 @@ export const buildApiUrl = (endpoint: string): string => {
 	const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
 	
 	// Si la base est vide (production Netlify), retourner juste l'endpoint
-	if (!finalBase || finalBase === '' || finalBase === '``' || finalBase === '%60%60') {
+	if (!finalBase || finalBase === '' || finalBase === '``') {
 		return cleanEndpoint;
 	}
 	

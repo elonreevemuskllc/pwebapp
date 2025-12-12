@@ -18,7 +18,9 @@ export const getApiBaseUrl = (): string => {
 	let cleanEnvUrl = envUrl.replace(/[`'"]/g, '').replace(/%60/g, '').trim();
 	
 	// Si après nettoyage c'est vide ou contient encore des caractères invalides, considérer comme vide
-	if (cleanEnvUrl === '' || cleanEnvUrl === '``' || cleanEnvUrl === '%60%60' || cleanEnvUrl.includes('`')) {
+	// Vérifier les backticks et l'encodage %60 (sans utiliser la chaîne littérale %60%60 pour éviter qu'elle soit dans le build)
+	const hasBackticks = cleanEnvUrl.includes('`') || cleanEnvUrl.includes('%60');
+	if (cleanEnvUrl === '' || cleanEnvUrl === '``' || hasBackticks) {
 		cleanEnvUrl = '';
 	}
 	
