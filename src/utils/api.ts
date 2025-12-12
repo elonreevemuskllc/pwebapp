@@ -10,13 +10,21 @@ import { getApiBaseUrl } from '../config/api';
 export const buildApiUrl = (endpoint: string): string => {
 	const baseUrl = getApiBaseUrl();
 	// Nettoyer la base URL : enlever les backticks et autres caractères invalides
-	const cleanBase = (baseUrl || '').replace(/[`'"]/g, '').trim();
+	let cleanBase = (baseUrl || '').toString().replace(/[`'"]/g, '').trim();
+	
+	// Si la base contient encore des backticks après nettoyage, la vider complètement
+	if (cleanBase.includes('`') || cleanBase === '``' || cleanBase === '%60%60') {
+		cleanBase = '';
+	}
+	
 	const finalBase = cleanBase.endsWith('/') ? cleanBase.slice(0, -1) : cleanBase;
 	const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+	
 	// Si la base est vide (production Netlify), retourner juste l'endpoint
-	if (!finalBase) {
+	if (!finalBase || finalBase === '' || finalBase === '``' || finalBase === '%60%60') {
 		return cleanEndpoint;
 	}
+	
 	return `${finalBase}${cleanEndpoint}`;
 };
 
