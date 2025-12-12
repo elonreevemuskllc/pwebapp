@@ -499,6 +499,16 @@ router.put('/admin/payment-requests/:id/decline', async (req, res) => {
 			admin_note
 		);
 
+		// Envoyer une notification
+		await sendNotification({
+			userId: request.user_id,
+			title: 'Paiement refusé ❌',
+			body: `Votre demande de paiement a été refusée. Raison: ${admin_note}`,
+			icon: '/icon-192x192.png',
+			url: '/affiliate/payments',
+			type: 'payment'
+		});
+
 		res.json({ success: true });
 	} catch (error) {
 		console.error('Error declining payment request:', error);
