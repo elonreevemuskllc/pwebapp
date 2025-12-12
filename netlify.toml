@@ -11,10 +11,12 @@
   # Exclure les fichiers de documentation, le code backend et le build output du scan de secrets
   SECRETS_SCAN_OMIT_PATHS = "*.md,*.example,*.backup,cellxpert-affiliate-api-settings.json,server/**,dev-dist/**,dist/**"
   # Ignorer les variables d'environnement standard (faux positifs)
-  SECRETS_SCAN_OMIT_KEYS = "NODE_ENV,DB_NAME,DB_PORT,PORT,DB_USER,VITE_SITE_URL"
+  # NETLIFY_BACKEND_URL est une variable d'environnement normale pour le proxy API
+  SECRETS_SCAN_OMIT_KEYS = "NODE_ENV,DB_NAME,DB_PORT,PORT,DB_USER,VITE_SITE_URL,NETLIFY_BACKEND_URL"
 
 # Configuration pour le contexte de production
 [context.production.environment]
   # Ignorer les variables d'environnement standard (faux positifs) en production
-  SECRETS_SCAN_OMIT_KEYS = "NODE_ENV,DB_NAME,DB_PORT,PORT,DB_USER,VITE_SITE_URL"
+  # NETLIFY_BACKEND_URL est une variable d'environnement normale pour le proxy API
+  SECRETS_SCAN_OMIT_KEYS = "NODE_ENV,DB_NAME,DB_PORT,PORT,DB_USER,VITE_SITE_URL,NETLIFY_BACKEND_URL"
 
