@@ -32,6 +32,8 @@ public/uploads/
 
 # Build files
 build/
+dist/
+dev-dist/
 *.tsbuildinfo
 
 # OS files
