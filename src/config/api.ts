@@ -6,21 +6,26 @@
 // Fonction pour obtenir l'URL de l'API
 // Cette fonction doit être utilisée partout au lieu de import.meta.env.VITE_API_URL
 export const getApiBaseUrl = (): string => {
+	// Récupérer la valeur injectée par Vite au build
 	const envUrl = import.meta.env.VITE_API_URL;
 	
-	// Si chaîne vide (production Netlify), utiliser l'origine actuelle (proxy)
-	if (envUrl === '' || !envUrl || envUrl === 'undefined' || envUrl === 'null') {
+	// Gérer tous les cas possibles : undefined, null, chaîne vide, ou la chaîne littérale "undefined"
+	const urlValue = envUrl === 'undefined' || envUrl === 'null' || envUrl === undefined || envUrl === null || envUrl === '' ? null : envUrl;
+	
+	// Si pas d'URL définie (production Netlify), utiliser l'origine actuelle (proxy)
+	if (!urlValue) {
 		// En production (Netlify), utiliser l'origine actuelle (proxy)
 		if (typeof window !== 'undefined') {
 			const hostname = window.location.hostname;
-			if (hostname.includes('netlify.app') || hostname.includes('netlify.com')) {
+			// Détecter Netlify ou tout autre domaine de production
+			if (hostname.includes('netlify.app') || hostname.includes('netlify.com') || hostname !== 'localhost' && hostname !== '127.0.0.1') {
 				return window.location.origin;
 			}
 		}
 		// En développement, utiliser l'URL par défaut
 		return 'http://72.61.102.27:3002';
 	}
-	return envUrl;
+	return urlValue;
 };
 
 // URL de base de l'API (pour compatibilité)

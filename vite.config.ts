@@ -12,9 +12,9 @@ export default defineConfig(({ mode }) => {
 	// Si VITE_API_URL est définie explicitement, l'utiliser
 	let apiUrl = env.VITE_API_URL;
 	
-	if (!apiUrl || apiUrl === 'undefined' || apiUrl === 'null') {
-		// En production (Netlify), utiliser chaîne vide pour proxy
-		// En développement, utiliser l'URL par défaut
+	// En production, toujours utiliser chaîne vide si non définie (pour proxy Netlify)
+	// En développement, utiliser l'URL par défaut
+	if (!apiUrl || apiUrl === 'undefined' || apiUrl === 'null' || apiUrl.trim() === '') {
 		if (mode === 'production') {
 			apiUrl = ''; // Chaîne vide = utiliser window.location.origin (proxy Netlify)
 		} else {
@@ -28,8 +28,11 @@ export default defineConfig(({ mode }) => {
 			port: 5174
 		},
 		define: {
-			// Injecter la valeur dans le code au moment du build
+			// FORCER l'injection de la valeur dans le code au moment du build
+			// Remplace TOUTES les occurrences de import.meta.env.VITE_API_URL
 			'import.meta.env.VITE_API_URL': JSON.stringify(apiUrl),
+			// Alternative pour certains cas
+			'process.env.VITE_API_URL': JSON.stringify(apiUrl),
 		},
 		envPrefix: 'VITE_',
 	plugins: [
