@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { toast } from 'sonner';
 import { Calendar } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
+import { api } from '../utils/httpClient';
 
 interface DateOfBirthModalProps {
 	onComplete: () => void;
@@ -24,12 +25,7 @@ export default function DateOfBirthModal({ onComplete }: DateOfBirthModalProps) 
 		setLoading(true);
 
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/update-date-of-birth`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				credentials: 'include',
-				body: JSON.stringify({ dateOfBirth })
-			});
+			const response = await api.post('/api/auth/update-date-of-birth', { dateOfBirth });
 
 			if (!response.ok) {
 				throw new Error(t('dateOfBirthModal.failedToUpdate'));

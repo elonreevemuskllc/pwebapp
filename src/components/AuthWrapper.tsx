@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import DateOfBirthModal from './DateOfBirthModal';
+import { api } from '../utils/httpClient';
 
 export default function AuthWrapper({ children }: { children: React.ReactNode }) {
 	const [showDateOfBirthModal, setShowDateOfBirthModal] = useState(false);
@@ -11,9 +12,7 @@ export default function AuthWrapper({ children }: { children: React.ReactNode })
 
 	const checkDateOfBirth = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/verify-session`, {
-				credentials: 'include'
-			});
+			const response = await api.get('/api/auth/verify-session');
 
 			if (response.ok) {
 				const data = await response.json();

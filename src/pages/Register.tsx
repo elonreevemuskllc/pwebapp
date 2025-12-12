@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'sonner';
 import { Loader2, ArrowLeft, CheckCircle2, ArrowRight, Check } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
+import { api } from '../utils/httpClient';
 
 function getCookie(name: string): string | null {
 	const value = `; ${document.cookie}`;
@@ -24,10 +25,10 @@ export default function Register() {
 
 	useEffect(() => {
 		const checkSession = async () => {
-			try {
-				const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/verify-session`, {
-					credentials: 'include'
-				});
+		try {
+			const response = await fetch(buildApiUrl('/api/auth/verify-session'), {
+				credentials: 'include'
+			});
 
 				if (response.ok) {
 					const data = await response.json();
@@ -135,11 +136,7 @@ export default function Register() {
 				payload.manager = parseInt(managerCookie);
 			}
 
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/register`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(payload)
-			});
+			const response = await api.post('/api/auth/register', payload);
 
 			const data = await response.json();
 

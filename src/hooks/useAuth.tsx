@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DateOfBirthModal from '../components/DateOfBirthModal';
+import { api } from '../utils/httpClient';
 
 interface User {
 	id: number;
@@ -22,7 +23,7 @@ export function useAuth() {
 
 	const verifySession = async () => {
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/verify-session`, {
+			const response = await fetch(buildApiUrl('/api/auth/verify-session'), {
 				credentials: 'include'
 			});
 
@@ -51,10 +52,7 @@ export function useAuth() {
 
 	const logout = async () => {
 		try {
-			await fetch(`${import.meta.env.VITE_API_URL}/api/auth/logout`, {
-				method: 'POST',
-				credentials: 'include'
-			});
+			await api.post('/api/auth/logout');
 		} catch (error) {
 			console.error('Logout error:', error);
 		} finally {

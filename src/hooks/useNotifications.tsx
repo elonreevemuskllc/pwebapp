@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
+import { buildApiUrl } from '../utils/api';
 
 export function useNotifications() {
 	const [permission, setPermission] = useState<NotificationPermission>('default');
@@ -55,11 +56,7 @@ export function useNotifications() {
 		if ('serviceWorker' in navigator) {
 			try {
 				// Enregistrer que l'utilisateur a activé les notifications
-				await fetch(`${import.meta.env.VITE_API_URL}/api/notifications/enable`, {
-					method: 'POST',
-					headers: { 'Content-Type': 'application/json' },
-					credentials: 'include'
-				});
+				await api.post('/api/notifications/enable');
 
 				console.log('Notifications activées avec succès');
 			} catch (error) {

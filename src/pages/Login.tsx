@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'sonner';
 import { Loader2, ArrowLeft, Clock, XCircle, Shield } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
+import { api } from '../utils/httpClient';
 
 export default function Login() {
 	const navigate = useNavigate();
@@ -12,9 +13,7 @@ export default function Login() {
 	useEffect(() => {
 		const checkSession = async () => {
 			try {
-				const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/verify-session`, {
-					credentials: 'include',
-				});
+				const response = await api.get('/api/auth/verify-session');
 
 				if (response.ok) {
 					const data = await response.json();
@@ -56,11 +55,7 @@ export default function Login() {
 		setLoading(true);
 
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/check-email`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ email }),
-			});
+			const response = await api.post('/api/auth/check-email', { email });
 
 			const data = await response.json();
 
@@ -92,11 +87,7 @@ export default function Login() {
 
 	const sendVerificationCode = async () => {
 		try {
-			await fetch(`${import.meta.env.VITE_API_URL}/api/auth/send-verification`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ email }),
-			});
+			await api.post('/api/auth/send-verification', { email });
 			toast.success(t('loginPage.toastVerificationCodeSent'));
 		} catch (err) {
 			console.error('Failed to send verification code:', err);
@@ -108,11 +99,7 @@ export default function Login() {
 		setLoading(true);
 
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/verify-code`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ email, code: verificationCode }),
-			});
+			const response = await api.post('/api/auth/verify-code', { email, code: verificationCode });
 
 			const data = await response.json();
 
@@ -134,12 +121,7 @@ export default function Login() {
 		setLoading(true);
 
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				credentials: 'include',
-				body: JSON.stringify({ email, password }),
-			});
+			const response = await api.post('/api/auth/login', { email, password });
 
 			const data = await response.json();
 
@@ -645,7 +627,7 @@ export default function Login() {
 									e.preventDefault();
 									setLoading(true);
 									try {
-										const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/forgot-password`, {
+										const response = await api.post('/api/auth/forgot-password', {
 											method: 'POST',
 											headers: { 'Content-Type': 'application/json' },
 											body: JSON.stringify({ email }),
@@ -730,11 +712,7 @@ export default function Login() {
 									}
 									setLoading(true);
 									try {
-										const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/reset-password`, {
-											method: 'POST',
-											headers: { 'Content-Type': 'application/json' },
-											body: JSON.stringify({ email, code: resetCode, newPassword }),
-										});
+										const response = await api.post('/api/auth/reset-password', { email, code: resetCode, newPassword });
 
 										const data = await response.json();
 

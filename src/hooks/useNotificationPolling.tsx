@@ -1,5 +1,6 @@
 import { useEffect, useCallback } from 'react';
 import { useNotifications } from './useNotifications';
+import { buildApiUrl } from '../utils/api';
 
 /**
  * Hook pour vérifier périodiquement les nouvelles notifications depuis le serveur
@@ -11,9 +12,7 @@ export function useNotificationPolling() {
 		if (!isGranted) return;
 
 		try {
-			const response = await fetch(`${import.meta.env.VITE_API_URL}/api/notifications/unread`, {
-				credentials: 'include'
-			});
+			const response = await api.get('/api/notifications/unread');
 
 			if (!response.ok) return;
 
@@ -48,10 +47,7 @@ export function useNotificationPolling() {
 					localStorage.setItem(shownKey, 'true');
 
 					// Marquer comme lue sur le serveur
-					fetch(`${import.meta.env.VITE_API_URL}/api/notifications/read/${notification.id}`, {
-						method: 'POST',
-						credentials: 'include'
-					}).catch(console.error);
+					api.post(`/api/notifications/read/${notification.id}`).catch(console.error);
 
 					// Auto-fermer après 5 secondes
 					setTimeout(() => notif.close(), 5000);

@@ -13,12 +13,14 @@ export default defineConfig(({ mode }) => {
 	let apiUrl = env.VITE_API_URL;
 	
 	// En production, toujours utiliser chaîne vide si non définie (pour proxy Netlify)
-	// En développement, utiliser l'URL par défaut
+	// En développement, utiliser l'URL par défaut depuis les variables d'environnement
 	if (!apiUrl || apiUrl === 'undefined' || apiUrl === 'null' || apiUrl.trim() === '') {
 		if (mode === 'production') {
 			apiUrl = ''; // Chaîne vide = utiliser window.location.origin (proxy Netlify)
 		} else {
-			apiUrl = 'http://72.61.102.27:3002';
+			// En développement, utiliser la variable d'environnement ou une chaîne vide
+			// L'URL sera gérée par getApiBaseUrl() dans src/config/api.ts
+			apiUrl = '';
 		}
 	}
 	
@@ -133,7 +135,17 @@ export default defineConfig(({ mode }) => {
 						}
 					},
 					{
-						urlPattern: /^https:\/\/.*\/api\/.*/i,
+						// Pattern pour les URLs API relatives (commençant par /api/)
+						// Exclure les URLs avec %22%22 ou des guillemets
+						urlPattern: ({ url }) => {
+							const pathname = url.pathname;
+							// Ne jamais cacher les URLs invalides
+							if (pathname.includes('%22') || pathname.includes('""') || pathname.includes('`')) {
+								return false;
+							}
+							// Cacher uniquement les URLs valides qui commencent par /api/
+							return pathname.startsWith('/api/');
+						},
 						handler: 'NetworkFirst',
 						options: {
 							cacheName: 'api-cache',
