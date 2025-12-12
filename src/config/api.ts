@@ -7,10 +7,20 @@
 // Cette fonction doit être utilisée partout au lieu de import.meta.env.VITE_API_URL
 export const getApiBaseUrl = (): string => {
 	// Récupérer la valeur injectée par Vite au build
-	const envUrl = import.meta.env.VITE_API_URL;
+	let envUrl = import.meta.env.VITE_API_URL;
 	
-	// Nettoyer immédiatement les backticks et autres caractères invalides
-	const cleanEnvUrl = typeof envUrl === 'string' ? envUrl.replace(/[`'"]/g, '').trim() : envUrl;
+	// Convertir en string et nettoyer immédiatement les backticks et autres caractères invalides
+	if (typeof envUrl !== 'string') {
+		envUrl = String(envUrl || '');
+	}
+	
+	// Nettoyer les backticks, guillemets, et l'encodage %60
+	let cleanEnvUrl = envUrl.replace(/[`'"]/g, '').replace(/%60/g, '').trim();
+	
+	// Si après nettoyage c'est vide ou contient encore des caractères invalides, considérer comme vide
+	if (cleanEnvUrl === '' || cleanEnvUrl === '``' || cleanEnvUrl === '%60%60' || cleanEnvUrl.includes('`')) {
+		cleanEnvUrl = '';
+	}
 	
 	// Gérer tous les cas possibles : undefined, null, chaîne vide, ou la chaîne littérale "undefined"
 	const urlValue = cleanEnvUrl === 'undefined' || cleanEnvUrl === 'null' || cleanEnvUrl === undefined || cleanEnvUrl === null || cleanEnvUrl === '' ? null : cleanEnvUrl;
@@ -21,15 +31,12 @@ export const getApiBaseUrl = (): string => {
 		if (typeof window !== 'undefined') {
 			const hostname = window.location.hostname;
 			// Détecter Netlify ou tout autre domaine de production
-			if (hostname.includes('netlify.app') || hostname.includes('netlify.com') || hostname !== 'localhost' && hostname !== '127.0.0.1') {
+			if (hostname.includes('netlify.app') || hostname.includes('netlify.com') || (hostname !== 'localhost' && hostname !== '127.0.0.1')) {
 				return window.location.origin;
 			}
 		}
-		// En développement, utiliser la variable d'environnement ou une valeur par défaut
-		// Note: Cette valeur ne devrait être utilisée qu'en développement local
-		// En production, utilisez toujours une chaîne vide pour le proxy Netlify
-		const devUrl = process.env.VITE_API_URL || '';
-		return typeof devUrl === 'string' ? devUrl.replace(/[`'"]/g, '').trim() : '';
+		// En développement, retourner chaîne vide (sera géré par buildApiUrl)
+		return '';
 	}
 	return urlValue;
 };
