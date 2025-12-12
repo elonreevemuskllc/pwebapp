@@ -1,0 +1,784 @@
+{
+	"info": {
+		"_postman_id": "2df4dcf2-7875-45fc-8d2a-3a85bd96fbdb",
+		"name": "Affiliate API Documentation- API Key version",
+		"description": "This documentation is designed for affiliates who use the Cellxpert affiliate system and wish to integrate it with other platforms.\n\nThis is a REST API which accepts both GET and POST.\n\n**Requirements:** Please whitelist your IP (approve it for access).\n\n<u>Note</u> that these calls work with the Affiliate ID and the Access Key which should be passed in Headers.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29189938",
+		"_collection_link": "https://speeding-sunset-219914.postman.co/workspace/cc08e24f-0f1c-4eda-9f67-8370503b47cf/collection/29189938-2df4dcf2-7875-45fc-8d2a-3a85bd96fbdb?action=share&source=collection_link&creator=29189938"
+	},
+	"item": [
+		{
+			"name": "Affiliate API calls",
+			"item": [
+				{
+					"name": "Media Report command call",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "affiliateid",
+								"value": 36063,
+								"description": "(Mandatory) the affiliate’s id- same as in the system."
+							},
+							{
+								"key": "x-api-key",
+								"value": "API Access Key",
+								"description": "(Mandatory) from the command Generate Access Key"
+							}
+						],
+						"url": {
+							"raw": "https://cx-new-ui.cellxpert.com//api/?command=mediareport&fromdate=YYYY-MM-DD&todate=YYYY-MM-DD&Day=1&DateFormat=day/month/year&TrackingCode=1&Brand=1&Language=1&Type=1&Size=1&Name=1&Filter-TrackingCode=trackingcode&Filter-Brand=brand&Filter-Language=language&Filter-Type=type&Filter-Size=size&Filter-Name=name",
+							"protocol": "https",
+							"host": [
+								"track",
+								"7ladies",
+								"com"
+							],
+							"path": [
+								"api",
+								""
+							],
+							"query": [
+								{
+									"key": "command",
+									"value": "mediareport",
+									"description": "(Mandatory)"
+								},
+								{
+									"key": "fromdate",
+									"value": "YYYY-MM-DD",
+									"description": "(Optional) filter date for the report. If no date is specified,  the default ‘from’ date will be 1 month back."
+								},
+								{
+									"key": "todate",
+									"value": "YYYY-MM-DD",
+									"description": "(Optional) filter date for the report. If no date is specified, the default ‘to’ date will be the current date."
+								},
+								{
+									"key": "Day",
+									"value": "1",
+									"description": "(Optional) breakdown field- it's mandatory to include at least one breakdown."
+								},
+								{
+									"key": "DateFormat",
+									"value": "day/month/year",
+									"description": "(Optional) breakdown field- by a different format than day. It's mandatory to include at least one breakdown."
+								},
+								{
+									"key": "TrackingCode",
+									"value": "1",
+									"description": "(Optional) breakdown field- it's mandatory to include at least one breakdown."
+								},
+								{
+									"key": "Brand",
+									"value": "1",
+									"description": "(Optional) breakdown field- it's mandatory to include at least one breakdown."
+								},
+								{
+									"key": "Language",
+									"value": "1",
+									"description": "(Optional) breakdown field- it's mandatory to include at least one breakdown."
+								},
+								{
+									"key": "Type",
+									"value": "1",
+									"description": "(Optional) breakdown field- it's mandatory to include at least one breakdown."
+								},
+								{
+									"key": "Size",
+									"value": "1",
+									"description": "(Optional) breakdown field- it's mandatory to include at least one breakdown."
+								},
+								{
+									"key": "Name",
+									"value": "1",
+									"description": "(Optional) breakdown field- it's mandatory to include at least one breakdown."
+								},
+								{
+									"key": "Filter-TrackingCode",
+									"value": "trackingcode",
+									"description": "(Optional) filter field- it's possible to include more than one."
+								},
+								{
+									"key": "Filter-Brand",
+									"value": "brand",
+									"description": "(Optional) filter field- it's possible to include more than one."
+								},
+								{
+									"key": "Filter-Language",
+									"value": "language",
+									"description": "(Optional) filter field- it's possible to include more than one."
+								},
+								{
+									"key": "Filter-Type",
+									"value": "type",
+									"description": "(Optional) filter field- it's possible to include more than one."
+								},
+								{
+									"key": "Filter-Size",
+									"value": "size",
+									"description": "(Optional) filter field- it's possible to include more than one."
+								},
+								{
+									"key": "Filter-Name",
+									"value": "name",
+									"description": "(Optional) filter field- it's possible to include more than one."
+								}
+							]
+						},
+						"description": "This command returns media report.\n\n#### **Parameters**\n\n##### **Breakdowns (all booleans- it's mandatory to include at least one breakdown):**\n\n- Day  \n    It's also possible to breakdown by other periods, by including the following parameter:\n    \n    - DateFormat (day/month/year), for example: DateFormat=month >> will group the results as per month.\n        \n- TrackingCode\n    \n- Brand\n    \n- Language\n    \n- Type\n    \n- Size\n    \n- Name\n    \n\n##### Filters: (it's possible to include several filters)\n\n- Filter-TrackingCode\n    \n- Filter-Brand\n    \n- Filter-Language\n    \n- Filter-Type\n    \n- Filter-Size\n    \n- Filter-Name"
+					},
+					"response": [
+						{
+							"name": "Media Report- Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "affiliateid",
+										"value": "2288"
+									},
+									{
+										"key": "x-api-key",
+										"value": "key"
+									}
+								],
+								"url": {
+									"raw": "https://cx-new-ui.cellxpert.com//api/?command=mediareport&fromdate=2023-01-01&todate=2023-01-31&Brand=1",
+									"protocol": "https",
+									"host": [
+										"track",
+										"7ladies",
+										"com"
+									],
+									"path": [
+										"api",
+										""
+									],
+									"query": [
+										{
+											"key": "command",
+											"value": "mediareport"
+										},
+										{
+											"key": "fromdate",
+											"value": "2023-01-01"
+										},
+										{
+											"key": "todate",
+											"value": "2023-01-31"
+										},
+										{
+											"key": "Brand",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Server",
+									"value": "rhino-core-shield"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 May 2024 08:25:54 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "X-Cache-Status",
+									"value": "MISS"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "<ResultSet xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n    <row>\n        <Day>2023/01/02</Day>\n        <Brand>6option</Brand>\n        <Impressions>0</Impressions>\n        <Visitors>0</Visitors>\n        <Unique_Visitors>0</Unique_Visitors>\n        <Leads>1</Leads>\n        <Unique_Leads>1</Unique_Leads>\n        <Leads>1</Leads>\n        <Unique_Pre_Reals>1</Unique_Pre_Reals>\n        <FTD>1</FTD>\n        <QFTD>0</QFTD>\n        <Deposits>100</Deposits>\n        <Volume>0</Volume>\n        <PL>0</PL>\n        <Commission>90</Commission>\n        <Demo>0</Demo>\n        <Unique_Demo>0</Unique_Demo>\n    </row>\n    <row>\n        <Day>2023/01/08</Day>\n        <Brand>6option</Brand>\n        <Impressions>0</Impressions>\n        <Visitors>0</Visitors>\n        <Unique_Visitors>0</Unique_Visitors>\n        <Leads>1</Leads>\n        <Unique_Leads>1</Unique_Leads>\n        <Leads>1</Leads>\n        <Unique_Pre_Reals>1</Unique_Pre_Reals>\n        <FTD>1</FTD>\n        <QFTD>4</QFTD>\n        <Deposits>1</Deposits>\n        <Volume>0</Volume>\n        <PL>0</PL>\n        <Commission>1</Commission>\n        <Demo>0</Demo>\n        <Unique_Demo>0</Unique_Demo>\n    </row>\n    <row>\n        <Day>2023/01/08</Day>\n        <Brand>bb</Brand>\n        <Impressions>0</Impressions>\n        <Visitors>0</Visitors>\n        <Unique_Visitors>0</Unique_Visitors>\n        <Leads>0</Leads>\n        <Unique_Leads>0</Unique_Leads>\n        <Leads>0</Leads>\n        <Unique_Pre_Reals>0</Unique_Pre_Reals>\n        <FTD>0</FTD>\n        <QFTD>1</QFTD>\n        <Deposits>0</Deposits>\n        <Volume>0</Volume>\n        <PL>0</PL>\n        <Commission>70</Commission>\n        <Demo>0</Demo>\n        <Unique_Demo>0</Unique_Demo>\n    </row>\n    <row>\n        <Day>2023/01/30</Day>\n        <Brand>bb</Brand>\n        <Impressions>0</Impressions>\n        <Visitors>0</Visitors>\n        <Unique_Visitors>0</Unique_Visitors>\n        <Leads>0</Leads>\n        <Unique_Leads>0</Unique_Leads>\n        <Leads>1</Leads>\n        <Unique_Pre_Reals>1</Unique_Pre_Reals>\n        <FTD>0</FTD>\n        <QFTD>0</QFTD>\n        <Deposits>0</Deposits>\n        <Volume>22</Volume>\n        <PL>0</PL>\n        <Commission>0</Commission>\n        <Demo>0</Demo>\n        <Unique_Demo>0</Unique_Demo>\n    </row>\n</ResultSet>"
+						},
+						{
+							"name": "Media Report- Fail",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "affiliateid",
+										"value": "2288"
+									},
+									{
+										"key": "x-api-key",
+										"value": "key"
+									}
+								],
+								"url": {
+									"raw": "https://cx-new-ui.cellxpert.com//api/?command=mediarepor&fromdate=2023-01-01&todate=2023-01-31&Brand=1",
+									"protocol": "https",
+									"host": [
+										"track",
+										"7ladies",
+										"com"
+									],
+									"path": [
+										"api",
+										""
+									],
+									"query": [
+										{
+											"key": "command",
+											"value": "mediarepor"
+										},
+										{
+											"key": "fromdate",
+											"value": "2023-01-01"
+										},
+										{
+											"key": "todate",
+											"value": "2023-01-31"
+										},
+										{
+											"key": "Brand",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Server",
+									"value": "rhino-core-shield"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 May 2024 08:28:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html"
+								},
+								{
+									"key": "Content-Length",
+									"value": "11"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "X-Cache-Status",
+									"value": "MISS"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "Bad Command"
+						}
+					]
+				},
+				{
+					"name": "Registrations Report command call",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "affiliateid",
+								"value": 36063,
+								"description": "(Mandatory) the affiliate’s id- same as in the system."
+							},
+							{
+								"key": "x-api-key",
+								"value": "API Access Key",
+								"description": "(Mandatory) from the command Generate Access Key"
+							}
+						],
+						"url": {
+							"raw": "https://cx-new-ui.cellxpert.com//api/?command=registrations&fromdate=YYYY-MM-DD&todate=YYYY-MM-DD&daterange=update\\fdd&userid=brand-123456&json=1",
+							"protocol": "https",
+							"host": [
+								"track",
+								"7ladies",
+								"com"
+							],
+							"path": [
+								"api",
+								""
+							],
+							"query": [
+								{
+									"key": "command",
+									"value": "registrations",
+									"description": "(Mandatory)"
+								},
+								{
+									"key": "fromdate",
+									"value": "YYYY-MM-DD",
+									"description": "(Optional) filter date for the report. If no date is specified,  the default ‘from’ date will be 1 month back."
+								},
+								{
+									"key": "todate",
+									"value": "YYYY-MM-DD",
+									"description": "(Optional) filter date for the report. If no date is specified, the default ‘to’ date will be the current date."
+								},
+								{
+									"key": "daterange",
+									"value": "update\\fdd",
+									"description": "(Optional) the default value (if not provided) is registration date. Possible values: update- by latest action (record update, last transaction, position or commission recorded, RS button enabled, etc); fdd - by first deposit date."
+								},
+								{
+									"key": "userid",
+									"value": "brand-123456",
+									"description": "(Optional) for single user search"
+								},
+								{
+									"key": "json",
+									"value": "1",
+									"description": "(Optional)"
+								}
+							]
+						},
+						"description": "This command returns a list of registered users (similar to the \"registrations\" report)."
+					},
+					"response": [
+						{
+							"name": "Registrations Report- Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "affiliateid",
+										"value": "2288"
+									},
+									{
+										"key": "x-api-key",
+										"value": "key"
+									}
+								],
+								"url": {
+									"raw": "https://cx-new-ui.cellxpert.com//api/?command=registrations&fromdate=2023-05-01&todate=2023-05-31&json=1",
+									"protocol": "https",
+									"host": [
+										"track",
+										"7ladies",
+										"com"
+									],
+									"path": [
+										"api",
+										""
+									],
+									"query": [
+										{
+											"key": "command",
+											"value": "registrations",
+											"description": "(Mandatory)"
+										},
+										{
+											"key": "fromdate",
+											"value": "2023-05-01"
+										},
+										{
+											"key": "todate",
+											"value": "2023-05-31"
+										},
+										{
+											"key": "json",
+											"value": "1",
+											"description": "(Optional)"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "rhino-core-shield"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 May 2024 08:47:32 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1473"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "X-Cache-Status",
+									"value": "MISS"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"registrations\": [\n        {\n            \"User_ID\": \"6option-40727100\",\n            \"Registration_Date\": \"2023-05-23T11:49:45.900\",\n            \"Tracking_Code\": \"Default\",\n            \"afp\": \"\",\n            \"Status\": \"New\",\n            \"Country\": \"--\",\n            \"Position_Count\": 0,\n            \"PL\": 0,\n            \"Net_PL\": 0,\n            \"Lot_Amount\": 0,\n            \"Volume\": 0,\n            \"First_Deposit\": 0,\n            \"Deposits\": 0,\n            \"Withdrawals\": 0,\n            \"Net_Deposits\": 0,\n            \"Deposit_Count\": 0,\n            \"Commission\": 0\n        },\n        {\n            \"User_ID\": \"6option-11181\",\n            \"Registration_Date\": \"2023-05-03T14:49:29.210\",\n            \"Tracking_Code\": \"Default\",\n            \"afp\": \"\",\n            \"Status\": \"New\",\n            \"Country\": \"RO\",\n            \"Position_Count\": 0,\n            \"PL\": 0,\n            \"Net_PL\": 0,\n            \"Lot_Amount\": 0,\n            \"Volume\": 0,\n            \"First_Deposit\": 0,\n            \"Deposits\": 0,\n            \"Withdrawals\": 0,\n            \"Net_Deposits\": 0,\n            \"Deposit_Count\": 0,\n            \"Commission\": 0\n        },\n        {\n            \"User_ID\": \"6option-12332123\",\n            \"Registration_Date\": \"2023-05-03T09:43:03.070\",\n            \"Tracking_Code\": \"Default\",\n            \"afp\": \"\",\n            \"Status\": \"New\",\n            \"Country\": \"--\",\n            \"Position_Count\": 0,\n            \"PL\": 0,\n            \"Net_PL\": 0,\n            \"Lot_Amount\": 0,\n            \"Volume\": 0,\n            \"First_Deposit\": 0,\n            \"Deposits\": 0,\n            \"Withdrawals\": 0,\n            \"Net_Deposits\": 0,\n            \"Deposit_Count\": 0,\n            \"Commission\": 0\n        },\n        {\n            \"User_ID\": \"6option-305202312331\",\n            \"Registration_Date\": \"2023-05-03T09:18:06.410\",\n            \"Tracking_Code\": \"testtest\",\n            \"afp\": \"\",\n            \"Status\": \"New\",\n            \"Country\": \"US\",\n            \"Position_Count\": 0,\n            \"PL\": 0,\n            \"Net_PL\": 0,\n            \"Lot_Amount\": 0,\n            \"Volume\": 0,\n            \"First_Deposit\": 0,\n            \"Deposits\": 0,\n            \"Withdrawals\": 0,\n            \"Net_Deposits\": 0,\n            \"Deposit_Count\": 0,\n            \"Commission\": 0\n        }\n    ]\n}"
+						},
+						{
+							"name": "Registrations Report- Fail",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "affiliateid",
+										"value": "2288"
+									},
+									{
+										"key": "x-api-key",
+										"value": "key"
+									}
+								],
+								"url": {
+									"raw": "https://cx-new-ui.cellxpert.com//api/?command=registrations&fromdate=2023-05-01&todate=2023-05-31&json=1",
+									"protocol": "https",
+									"host": [
+										"track",
+										"7ladies",
+										"com"
+									],
+									"path": [
+										"api",
+										""
+									],
+									"query": [
+										{
+											"key": "command",
+											"value": "registrations",
+											"description": "(Mandatory)"
+										},
+										{
+											"key": "fromdate",
+											"value": "2023-05-01"
+										},
+										{
+											"key": "todate",
+											"value": "2023-05-31"
+										},
+										{
+											"key": "json",
+											"value": "1",
+											"description": "(Optional)"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Server",
+									"value": "rhino-core-shield"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 May 2024 08:47:58 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html"
+								},
+								{
+									"key": "Content-Length",
+									"value": "22"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "X-Cache-Status",
+									"value": "MISS"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "Bad Authentication Key"
+						}
+					]
+				},
+				{
+					"name": "Commissions Report command call",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "affiliateid",
+								"value": 36063,
+								"description": "(Mandatory) the affiliate’s id- same as in the system."
+							},
+							{
+								"key": "x-api-key",
+								"value": "API Access Key",
+								"description": "(Mandatory) from the command Generate Access Key"
+							}
+						],
+						"url": {
+							"raw": "https://cx-new-ui.cellxpert.com//api/?command=commissions&fromdate=YYYY-MM-DD&todate=YYYY-MM-DD",
+							"protocol": "https",
+							"host": [
+								"track",
+								"7ladies",
+								"com"
+							],
+							"path": [
+								"api",
+								""
+							],
+							"query": [
+								{
+									"key": "command",
+									"value": "commissions",
+									"description": "(Mandatory)"
+								},
+								{
+									"key": "fromdate",
+									"value": "YYYY-MM-DD",
+									"description": "(Optional) filter date for the report. If no date is specified,  the default ‘from’ date will be 1 month back."
+								},
+								{
+									"key": "todate",
+									"value": "YYYY-MM-DD",
+									"description": "(Optional) filter date for the report. If no date is specified, the default ‘to’ date will be the current date."
+								}
+							]
+						},
+						"description": "This command returns a list of commissions that were generated."
+					},
+					"response": [
+						{
+							"name": "Commissions Report- Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "affiliateid",
+										"value": "2288"
+									},
+									{
+										"key": "x-api-key",
+										"value": "c33480081c13ea2f78beef75de6aea92c224e477d4870aeee7a6000223096c57675771696949122e29658f6ba1"
+									}
+								],
+								"url": {
+									"raw": "https://cx-new-ui.cellxpert.com//api/?command=commissions&fromdate=2023-04-01&todate=2023-04-30",
+									"protocol": "https",
+									"host": [
+										"track",
+										"7ladies",
+										"com"
+									],
+									"path": [
+										"api",
+										""
+									],
+									"query": [
+										{
+											"key": "command",
+											"value": "commissions"
+										},
+										{
+											"key": "fromdate",
+											"value": "2023-04-01"
+										},
+										{
+											"key": "todate",
+											"value": "2023-04-30"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Server",
+									"value": "rhino-core-shield"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 May 2024 08:58:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "X-Cache-Status",
+									"value": "MISS"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "<?xml version=\"1.0\"?>\n<ResultSet>\n    <Commission>\n        <id>853939</id>\n        <TraderId></TraderId>\n        <comment_by_Gil></comment_by_Gil>\n        <afp></afp>\n        <TrackingCode>Assaf Default campaign</TrackingCode>\n        <CommissionType>Sub Affiliate Commission</CommissionType>\n        <Commission>59</Commission>\n        <created>4/17/2023 2:29:41 PM</created>\n    </Commission>\n    <Commission>\n        <id>853940</id>\n        <TraderId></TraderId>\n        <comment_by_Gil></comment_by_Gil>\n        <afp></afp>\n        <TrackingCode>Assaf Default campaign</TrackingCode>\n        <CommissionType>Sub Affiliate Commission CPA</CommissionType>\n        <Commission>20</Commission>\n        <created>4/17/2023 2:29:41 PM</created>\n    </Commission>\n    <Commission>\n        <id>853942</id>\n        <TraderId></TraderId>\n        <comment_by_Gil></comment_by_Gil>\n        <afp></afp>\n        <TrackingCode>Assaf Default campaign</TrackingCode>\n        <CommissionType>Adjustment</CommissionType>\n        <Commission>-20</Commission>\n        <created>4/17/2023</created>\n    </Commission>\n    <Commission>\n        <id>853933</id>\n        <TraderId></TraderId>\n        <comment_by_Gil></comment_by_Gil>\n        <afp></afp>\n        <TrackingCode>Assaf Default campaign</TrackingCode>\n        <CommissionType>Sub Affiliate Commission</CommissionType>\n        <Commission>33.4</Commission>\n        <created>4/17/2023 8:23:59 AM</created>\n    </Commission>\n    <Commission>\n        <id>853934</id>\n        <TraderId></TraderId>\n        <comment_by_Gil></comment_by_Gil>\n        <afp></afp>\n        <TrackingCode>Assaf Default campaign</TrackingCode>\n        <CommissionType>Sub Affiliate Commission CPA</CommissionType>\n        <Commission>20</Commission>\n        <created>4/17/2023 8:23:59 AM</created>\n    </Commission>\n    <Commission>\n        <id>853936</id>\n        <TraderId></TraderId>\n        <comment_by_Gil></comment_by_Gil>\n        <afp></afp>\n        <TrackingCode>Assaf Default campaign</TrackingCode>\n        <CommissionType>Chargeback</CommissionType>\n        <Commission>-53.4</Commission>\n        <created>4/17/2023 9:56:34 AM</created>\n    </Commission>\n    <Commission>\n        <id>853930</id>\n        <TraderId></TraderId>\n        <comment_by_Gil></comment_by_Gil>\n        <afp></afp>\n        <TrackingCode>Assaf Default campaign</TrackingCode>\n        <CommissionType>Sub Affiliate Commission</CommissionType>\n        <Commission>40</Commission>\n        <created>4/17/2023 8:20:42 AM</created>\n    </Commission>\n    <Commission>\n        <id>853931</id>\n        <TraderId></TraderId>\n        <comment_by_Gil></comment_by_Gil>\n        <afp></afp>\n        <TrackingCode>Assaf Default campaign</TrackingCode>\n        <CommissionType>Sub Affiliate Commission CPA</CommissionType>\n        <Commission>20</Commission>\n        <created>4/17/2023 8:20:42 AM</created>\n    </Commission>\n</ResultSet>"
+						},
+						{
+							"name": "Commissions Report- Fail",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "affiliateid",
+										"value": "228"
+									},
+									{
+										"key": "x-api-key",
+										"value": "key"
+									}
+								],
+								"url": {
+									"raw": "https://cx-new-ui.cellxpert.com//api/?command=commissions&fromdate=2023-04-01&todate=2023-04-30",
+									"protocol": "https",
+									"host": [
+										"track",
+										"7ladies",
+										"com"
+									],
+									"path": [
+										"api",
+										""
+									],
+									"query": [
+										{
+											"key": "command",
+											"value": "commissions"
+										},
+										{
+											"key": "fromdate",
+											"value": "2023-04-01"
+										},
+										{
+											"key": "todate",
+											"value": "2023-04-30"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Server",
+									"value": "rhino-core-shield"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 May 2024 08:59:30 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html"
+								},
+								{
+									"key": "Content-Length",
+									"value": "22"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "X-Cache-Status",
+									"value": "MISS"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "Bad Authentication Key"
+						}
+					]
+				}
+			],
+			"description": "We recommend that you limit the date range for all calls to a maximum of 31 days, in order to avoid errors.\n\nMake sure not to include future dates, otherwise it may result in a failed API request.\n\nSome of the commands support JSON format. You will see &json=1 at the end of each command that does."
+		}
+	]
+}

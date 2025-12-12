@@ -1,0 +1,44 @@
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment variables - IMPORTANT: Ne jamais commiter le .env !
+.env
+.env.local
+.env.production
+.env.development
+
+# Uploads directory - contains user-uploaded files
+public/uploads/
+
+# Build files
+build/
+*.tsbuildinfo
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Scripts temporaires
+test-server.ps1
+start.ps1
+start.bat

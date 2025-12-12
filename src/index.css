@@ -1,0 +1,389 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--background: rgb(255, 255, 255);
+	--foreground: rgb(10, 10, 10);
+	--card: rgb(255, 255, 255);
+	--card-foreground: rgb(10, 10, 10);
+	--popover: rgb(255, 255, 255);
+	--popover-foreground: rgb(10, 10, 10);
+	--primary: rgb(23, 23, 23);
+	--primary-foreground: rgb(250, 250, 250);
+	--secondary: rgb(245, 245, 245);
+	--secondary-foreground: rgb(23, 23, 23);
+	--muted: rgb(245, 245, 245);
+	--muted-foreground: rgb(115, 115, 115);
+	--accent: rgb(245, 245, 245);
+	--accent-foreground: rgb(23, 23, 23);
+	--destructive: rgb(231, 0, 11);
+	--destructive-foreground: rgb(255, 255, 255);
+	--border: rgb(229, 229, 229);
+	--input: rgb(229, 229, 229);
+	--ring: rgb(161, 161, 161);
+	--chart-1: rgb(145, 197, 255);
+	--chart-2: rgb(58, 129, 246);
+	--chart-3: rgb(37, 99, 239);
+	--chart-4: rgb(26, 78, 218);
+	--chart-5: rgb(31, 63, 173);
+	--sidebar: rgb(250, 250, 250);
+	--sidebar-foreground: rgb(10, 10, 10);
+	--sidebar-primary: rgb(23, 23, 23);
+	--sidebar-primary-foreground: rgb(250, 250, 250);
+	--sidebar-accent: rgb(245, 245, 245);
+	--sidebar-accent-foreground: rgb(23, 23, 23);
+	--sidebar-border: rgb(229, 229, 229);
+	--sidebar-ring: rgb(161, 161, 161);
+	--font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+	--font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+	--font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	--radius: 0.625rem;
+	--shadow-x: 0;
+	--shadow-y: 1px;
+	--shadow-blur: 3px;
+	--shadow-spread: 0px;
+	--shadow-opacity: 0.1;
+	--shadow-color: oklch(0 0 0);
+	--shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+	--shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+	--shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+	--shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+	--shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+	--shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+	--shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
+	--shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+	--tracking-normal: 0em;
+	--spacing: 0.25rem;
+}
+
+.dark {
+	--background: rgb(10, 10, 10);
+	--foreground: rgb(250, 250, 250);
+	--card: rgb(23, 23, 23);
+	--card-foreground: rgb(250, 250, 250);
+	--popover: rgb(38, 38, 38);
+	--popover-foreground: rgb(250, 250, 250);
+	--primary: rgb(229, 229, 229);
+	--primary-foreground: rgb(23, 23, 23);
+	--secondary: rgb(38, 38, 38);
+	--secondary-foreground: rgb(250, 250, 250);
+	--muted: rgb(38, 38, 38);
+	--muted-foreground: rgb(161, 161, 161);
+	--accent: rgb(64, 64, 64);
+	--accent-foreground: rgb(250, 250, 250);
+	--destructive: rgb(255, 100, 103);
+	--destructive-foreground: rgb(250, 250, 250);
+	--border: rgb(40, 40, 40);
+	--input: rgb(52, 52, 52);
+	--ring: rgb(115, 115, 115);
+	--chart-1: rgb(145, 197, 255);
+	--chart-2: rgb(58, 129, 246);
+	--chart-3: rgb(37, 99, 239);
+	--chart-4: rgb(26, 78, 218);
+	--chart-5: rgb(31, 63, 173);
+	--sidebar: rgb(23, 23, 23);
+	--sidebar-foreground: rgb(250, 250, 250);
+	--sidebar-primary: rgb(20, 71, 230);
+	--sidebar-primary-foreground: rgb(250, 250, 250);
+	--sidebar-accent: rgb(38, 38, 38);
+	--sidebar-accent-foreground: rgb(250, 250, 250);
+	--sidebar-border: rgb(40, 40, 40);
+	--sidebar-ring: rgb(82, 82, 82);
+	--font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+	--font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+	--font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	--radius: 0.625rem;
+	--shadow-x: 0;
+	--shadow-y: 1px;
+	--shadow-blur: 3px;
+	--shadow-spread: 0px;
+	--shadow-opacity: 0.1;
+	--shadow-color: oklch(0 0 0);
+	--shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+	--shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+	--shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+	--shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+	--shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+	--shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+	--shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
+	--shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--color-chart-1: var(--chart-1);
+	--color-chart-2: var(--chart-2);
+	--color-chart-3: var(--chart-3);
+	--color-chart-4: var(--chart-4);
+	--color-chart-5: var(--chart-5);
+	--color-sidebar: var(--sidebar);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-ring: var(--sidebar-ring);
+
+	--font-sans: var(--font-sans);
+	--font-mono: var(--font-mono);
+	--font-serif: var(--font-serif);
+
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+
+	--shadow-2xs: var(--shadow-2xs);
+	--shadow-xs: var(--shadow-xs);
+	--shadow-sm: var(--shadow-sm);
+	--shadow: var(--shadow);
+	--shadow-md: var(--shadow-md);
+	--shadow-lg: var(--shadow-lg);
+	--shadow-xl: var(--shadow-xl);
+	--shadow-2xl: var(--shadow-2xl);
+}
+
+body {
+	background-color: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-sans);
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Animations fluides et motion */
+* {
+	transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 150ms;
+}
+
+/* Animations pour les cartes */
+[class*="bg-card"],
+[class*="bg-popover"],
+.card {
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[class*="bg-card"]:hover,
+[class*="bg-popover"]:hover,
+.card:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-lg);
+}
+
+/* Animations pour les boutons */
+button,
+[role="button"],
+a[class*="btn"] {
+	transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover,
+[role="button"]:hover,
+a[class*="btn"]:hover {
+	transform: translateY(-1px);
+}
+
+button:active,
+[role="button"]:active,
+a[class*="btn"]:active {
+	transform: translateY(0);
+}
+
+/* Animations pour les inputs */
+input,
+textarea,
+select {
+	transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+	transform: scale(1.01);
+}
+
+/* Animations pour les liens */
+a {
+	transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animations d'apparition */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideIn {
+	from {
+		opacity: 0;
+		transform: translateX(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes scaleIn {
+	from {
+		opacity: 0;
+		transform: scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+/* Classes utilitaires pour les animations */
+.animate-fade-in {
+	animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-slide-in {
+	animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-scale-in {
+	animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth scrolling */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Amélioration des bordures et ombres */
+[class*="border"] {
+	border-color: var(--border);
+}
+
+[class*="shadow"] {
+	box-shadow: var(--shadow);
+}
+
+/* Amélioration du contraste pour le texte muted */
+.text-muted-foreground {
+	color: var(--muted-foreground);
+}
+
+/* Style pour les modales et popovers */
+[role="dialog"],
+[role="alertdialog"] {
+	animation: scaleIn 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Amélioration des transitions pour le thème */
+.dark * {
+	transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 200ms;
+}
+
+/* Style pour les éléments interactifs */
+[class*="hover:"],
+[class*="focus:"] {
+	transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Amélioration du style des cartes */
+.bg-card {
+	background-color: var(--card);
+	color: var(--card-foreground);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+}
+
+/* Amélioration du style des éléments secondaires */
+.bg-secondary {
+	background-color: var(--secondary);
+	color: var(--secondary-foreground);
+}
+
+/* Amélioration du style des éléments muted */
+.bg-muted {
+	background-color: var(--muted);
+	color: var(--muted-foreground);
+}
+
+/* Amélioration du style des éléments accent */
+.bg-accent {
+	background-color: var(--accent);
+	color: var(--accent-foreground);
+}
+
+/* Animation de chargement fluide */
+@keyframes pulse {
+	0%, 100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.5;
+	}
+}
+
+.animate-pulse {
+	animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Animation shimmer pour la barre de progression */
+@keyframes shimmer {
+	0% {
+		background-position: -200% 0;
+	}
+	100% {
+		background-position: 200% 0;
+	}
+}
+
+.animate-shimmer {
+	animation: shimmer 2s infinite;
+}
+
+/* Transition fluide pour le changement de thème */
+:root {
+	color-scheme: light;
+}
+
+.dark {
+	color-scheme: dark;
+}
+
+/* Support pour les mouvements réduits */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}

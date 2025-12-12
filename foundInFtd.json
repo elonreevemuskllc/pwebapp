@@ -1,0 +1,1289 @@
+[
+  {
+    "id": 10139899,
+    "TraderId": "mystake-35951920",
+    "afp": "Organic",
+    "TrackingCode": "zchapv",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T01:19:30"
+  },
+  {
+    "id": 10139891,
+    "TraderId": "mystake-35951505",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T00:21:08"
+  },
+  {
+    "id": 10139904,
+    "TraderId": "mystake-35952175",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T01:35:20"
+  },
+  {
+    "id": 10139906,
+    "TraderId": "mystake-35952230",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T01:43:16"
+  },
+  {
+    "id": 10139916,
+    "TraderId": "mystake-35952644",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T03:03:05"
+  },
+  {
+    "id": 10139898,
+    "TraderId": "mystake-35951897",
+    "afp": "Organic",
+    "TrackingCode": "zfeel",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T01:03:06"
+  },
+  {
+    "id": 10139910,
+    "TraderId": "mystake-35952462",
+    "afp": "Organic",
+    "TrackingCode": "zfeel",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T02:23:06"
+  },
+  {
+    "id": 10146551,
+    "TraderId": "mystake-35956486",
+    "afp": "Organic",
+    "TrackingCode": "zfeel",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T14:07:11"
+  },
+  {
+    "id": 10146600,
+    "TraderId": "mystake-35957009",
+    "afp": "Organic",
+    "TrackingCode": "zfeel",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T15:53:18"
+  },
+  {
+    "id": 10139893,
+    "TraderId": "mystake-35951654",
+    "afp": "Organic",
+    "TrackingCode": "zmatt",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T00:29:47"
+  },
+  {
+    "id": 10139894,
+    "TraderId": "mystake-35951694",
+    "afp": "Organic",
+    "TrackingCode": "zmatt",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T00:39:01"
+  },
+  {
+    "id": 10139896,
+    "TraderId": "mystake-35951851",
+    "afp": "Organic",
+    "TrackingCode": "zmatt",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T00:55:11"
+  },
+  {
+    "id": 10146458,
+    "TraderId": "mystake-35954155",
+    "afp": "Organic",
+    "TrackingCode": "zmatt",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T08:33:18"
+  },
+  {
+    "id": 10146553,
+    "TraderId": "mystake-35956520",
+    "afp": "Organic",
+    "TrackingCode": "zmatt",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T14:07:11"
+  },
+  {
+    "id": 10146569,
+    "TraderId": "mystake-35956729",
+    "afp": "Organic",
+    "TrackingCode": "zmatt",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T14:39:06"
+  },
+  {
+    "id": 10139890,
+    "TraderId": "mystake-35951492",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T00:13:17"
+  },
+  {
+    "id": 10139897,
+    "TraderId": "mystake-35951822",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T00:55:11"
+  },
+  {
+    "id": 10139903,
+    "TraderId": "mystake-35952061",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T01:35:19"
+  },
+  {
+    "id": 10139905,
+    "TraderId": "mystake-35952192",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T01:43:11"
+  },
+  {
+    "id": 10139908,
+    "TraderId": "mystake-35952350",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T02:07:13"
+  },
+  {
+    "id": 10139912,
+    "TraderId": "mystake-35952559",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T02:47:07"
+  },
+  {
+    "id": 10139918,
+    "TraderId": "mystake-35952694",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T03:11:07"
+  },
+  {
+    "id": 10146468,
+    "TraderId": "mystake-35954404",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T09:13:36"
+  },
+  {
+    "id": 10146498,
+    "TraderId": "mystake-35954771",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T11:11:08"
+  },
+  {
+    "id": 10146531,
+    "TraderId": "mystake-35956005",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T13:03:02"
+  },
+  {
+    "id": 10146538,
+    "TraderId": "mystake-35956102",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T13:19:07"
+  },
+  {
+    "id": 10146541,
+    "TraderId": "mystake-35956191",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T13:35:23"
+  },
+  {
+    "id": 10146547,
+    "TraderId": "mystake-35956277",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T13:59:10"
+  },
+  {
+    "id": 10146637,
+    "TraderId": "mystake-35958101",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T17:43:29"
+  },
+  {
+    "id": 10146651,
+    "TraderId": "mystake-35958515",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T18:27:06"
+  },
+  {
+    "id": 10146456,
+    "TraderId": "mystake-35954096",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T08:25:10"
+  },
+  {
+    "id": 10146489,
+    "TraderId": "mystake-35954921",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T10:39:05"
+  },
+  {
+    "id": 10146492,
+    "TraderId": "mystake-35954984",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T10:55:13"
+  },
+  {
+    "id": 10146527,
+    "TraderId": "mystake-35955672",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T12:39:35"
+  },
+  {
+    "id": 10146562,
+    "TraderId": "mystake-35956319",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T14:23:24"
+  },
+  {
+    "id": 10139919,
+    "TraderId": "mystake-35952527",
+    "afp": "Organic",
+    "TrackingCode": "zjules",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T03:11:08"
+  },
+  {
+    "id": 10139927,
+    "TraderId": "mystake-35952926",
+    "afp": "Organic",
+    "TrackingCode": "zjules",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T04:15:23"
+  },
+  {
+    "id": 10139933,
+    "TraderId": "mystake-35953272",
+    "afp": "Organic",
+    "TrackingCode": "zjules",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T05:19:07"
+  },
+  {
+    "id": 10139935,
+    "TraderId": "mystake-35953400",
+    "afp": "Organic",
+    "TrackingCode": "zjules",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T05:51:07"
+  },
+  {
+    "id": 10146355,
+    "TraderId": "mystake-35953639",
+    "afp": "Organic",
+    "TrackingCode": "zjules",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T06:39:22"
+  },
+  {
+    "id": 10146447,
+    "TraderId": "mystake-35953844",
+    "afp": "Organic",
+    "TrackingCode": "zjules",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T07:19:09"
+  },
+  {
+    "id": 10146462,
+    "TraderId": "mystake-35954273",
+    "afp": "Organic",
+    "TrackingCode": "zjules",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T08:49:10"
+  },
+  {
+    "id": 10146471,
+    "TraderId": "mystake-35954578",
+    "afp": "Organic",
+    "TrackingCode": "zjules",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T09:49:23"
+  },
+  {
+    "id": 10146483,
+    "TraderId": "mystake-35954787",
+    "afp": "Organic",
+    "TrackingCode": "zjules",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T10:23:11"
+  },
+  {
+    "id": 10146506,
+    "TraderId": "mystake-35955493",
+    "afp": "Organic",
+    "TrackingCode": "zjules",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T11:59:09"
+  },
+  {
+    "id": 10146524,
+    "TraderId": "mystake-35955617",
+    "afp": "Organic",
+    "TrackingCode": "zjules",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T12:23:06"
+  },
+  {
+    "id": 10139920,
+    "TraderId": "mystake-35952733",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T03:19:08"
+  },
+  {
+    "id": 10139932,
+    "TraderId": "mystake-35953236",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T05:11:06"
+  },
+  {
+    "id": 10146470,
+    "TraderId": "mystake-35954506",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T09:33:16"
+  },
+  {
+    "id": 10146473,
+    "TraderId": "mystake-35954653",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T10:05:25"
+  },
+  {
+    "id": 10146479,
+    "TraderId": "mystake-35954681",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T10:15:00"
+  },
+  {
+    "id": 10146478,
+    "TraderId": "mystake-35954705",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T10:15:00"
+  },
+  {
+    "id": 10146484,
+    "TraderId": "mystake-35954736",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T10:23:11"
+  },
+  {
+    "id": 10146487,
+    "TraderId": "mystake-35954854",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T10:31:12"
+  },
+  {
+    "id": 10146490,
+    "TraderId": "mystake-35954857",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T10:39:05"
+  },
+  {
+    "id": 10146525,
+    "TraderId": "mystake-35955721",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T12:31:20"
+  },
+  {
+    "id": 10146534,
+    "TraderId": "mystake-35956068",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T13:11:21"
+  },
+  {
+    "id": 10146539,
+    "TraderId": "mystake-35956179",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T13:27:06"
+  },
+  {
+    "id": 10146552,
+    "TraderId": "mystake-35956444",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T14:07:11"
+  },
+  {
+    "id": 10146556,
+    "TraderId": "mystake-35956513",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T14:15:05"
+  },
+  {
+    "id": 10146564,
+    "TraderId": "mystake-35956686",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T14:31:09"
+  },
+  {
+    "id": 10146570,
+    "TraderId": "mystake-35956716",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T14:39:06"
+  },
+  {
+    "id": 10146579,
+    "TraderId": "mystake-35956881",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T15:03:19"
+  },
+  {
+    "id": 10146582,
+    "TraderId": "mystake-35956975",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T15:21:19"
+  },
+  {
+    "id": 10146581,
+    "TraderId": "mystake-35956982",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T15:21:19"
+  },
+  {
+    "id": 10146598,
+    "TraderId": "mystake-35957207",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T15:45:25"
+  },
+  {
+    "id": 10146595,
+    "TraderId": "mystake-35957233",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T15:45:22"
+  },
+  {
+    "id": 10146605,
+    "TraderId": "mystake-35957412",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T16:11:41"
+  },
+  {
+    "id": 10146614,
+    "TraderId": "mystake-35957572",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T16:29:15"
+  },
+  {
+    "id": 10146615,
+    "TraderId": "mystake-35957594",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T16:29:15"
+  },
+  {
+    "id": 10146619,
+    "TraderId": "mystake-35957702",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T16:47:12"
+  },
+  {
+    "id": 10146626,
+    "TraderId": "mystake-35957825",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T16:55:24"
+  },
+  {
+    "id": 10146635,
+    "TraderId": "mystake-35958025",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T17:43:29"
+  },
+  {
+    "id": 10146632,
+    "TraderId": "mystake-35958030",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T17:27:24"
+  },
+  {
+    "id": 10146644,
+    "TraderId": "mystake-35958202",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T17:51:19"
+  },
+  {
+    "id": 10146668,
+    "TraderId": "mystake-35958925",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T19:23:21"
+  },
+  {
+    "id": 10139928,
+    "TraderId": "mystake-35953041",
+    "afp": "Organic",
+    "TrackingCode": "zmatt",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T04:23:12"
+  },
+  {
+    "id": 10139931,
+    "TraderId": "mystake-35953193",
+    "afp": "Organic",
+    "TrackingCode": "zmatt",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T05:03:06"
+  },
+  {
+    "id": 10146454,
+    "TraderId": "mystake-35954085",
+    "afp": "Organic",
+    "TrackingCode": "zmatt",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T08:17:13"
+  },
+  {
+    "id": 10146480,
+    "TraderId": "mystake-35954744",
+    "afp": "Organic",
+    "TrackingCode": "zmatt",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T10:15:00"
+  },
+  {
+    "id": 10146497,
+    "TraderId": "mystake-35955197",
+    "afp": "Organic",
+    "TrackingCode": "zmatt",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T11:11:08"
+  },
+  {
+    "id": 10146606,
+    "TraderId": "mystake-35957459",
+    "afp": "Organic",
+    "TrackingCode": "zmatt",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T16:11:46"
+  },
+  {
+    "id": 10146649,
+    "TraderId": "mystake-35958110",
+    "afp": "Organic",
+    "TrackingCode": "zmatt",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T18:07:31"
+  },
+  {
+    "id": 10146667,
+    "TraderId": "mystake-35958882",
+    "afp": "Organic",
+    "TrackingCode": "zmatt",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T19:15:06"
+  },
+  {
+    "id": 10146549,
+    "TraderId": "mystake-35956424",
+    "afp": "Organic",
+    "TrackingCode": "zmatt",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T13:59:10"
+  },
+  {
+    "id": 10146455,
+    "TraderId": "mystake-35954071",
+    "afp": "Organic",
+    "TrackingCode": "zfeel",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T08:17:13"
+  },
+  {
+    "id": 10146496,
+    "TraderId": "mystake-35954952",
+    "afp": "Organic",
+    "TrackingCode": "zfeel",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T11:03:02"
+  },
+  {
+    "id": 10146507,
+    "TraderId": "mystake-35955251",
+    "afp": "Organic",
+    "TrackingCode": "zfeel",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T11:59:09"
+  },
+  {
+    "id": 10146512,
+    "TraderId": "mystake-35955612",
+    "afp": "Organic",
+    "TrackingCode": "zfeel",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T12:15:44"
+  },
+  {
+    "id": 10146542,
+    "TraderId": "mystake-35956160",
+    "afp": "Organic",
+    "TrackingCode": "zfeel",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T13:35:23"
+  },
+  {
+    "id": 10146561,
+    "TraderId": "mystake-35956601",
+    "afp": "Organic",
+    "TrackingCode": "zfeel",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T14:23:23"
+  },
+  {
+    "id": 10146574,
+    "TraderId": "mystake-35956689",
+    "afp": "Organic",
+    "TrackingCode": "zfeel",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T14:47:17"
+  },
+  {
+    "id": 10146593,
+    "TraderId": "mystake-35956968",
+    "afp": "Organic",
+    "TrackingCode": "zfeel",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T15:37:22"
+  },
+  {
+    "id": 10146596,
+    "TraderId": "mystake-35957240",
+    "afp": "Organic",
+    "TrackingCode": "zfeel",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T15:45:22"
+  },
+  {
+    "id": 10146608,
+    "TraderId": "mystake-35957501",
+    "afp": "Organic",
+    "TrackingCode": "zfeel",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T16:21:11"
+  },
+  {
+    "id": 10146627,
+    "TraderId": "mystake-35957822",
+    "afp": "Organic",
+    "TrackingCode": "zfeel",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T17:03:04"
+  },
+  {
+    "id": 10146641,
+    "TraderId": "mystake-35958104",
+    "afp": "Organic",
+    "TrackingCode": "zfeel",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T17:43:32"
+  },
+  {
+    "id": 10146670,
+    "TraderId": "mystake-35958303",
+    "afp": "Organic",
+    "TrackingCode": "zfeel",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T19:23:21"
+  },
+  {
+    "id": 10139923,
+    "TraderId": "mystake-35952879",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T03:51:08"
+  },
+  {
+    "id": 10139934,
+    "TraderId": "mystake-35953318",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T05:35:11"
+  },
+  {
+    "id": 10146459,
+    "TraderId": "mystake-35954181",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T08:41:31"
+  },
+  {
+    "id": 10146461,
+    "TraderId": "mystake-35954288",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T08:49:10"
+  },
+  {
+    "id": 10146467,
+    "TraderId": "mystake-35954381",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T09:13:36"
+  },
+  {
+    "id": 10146486,
+    "TraderId": "mystake-35954672",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T10:31:12"
+  },
+  {
+    "id": 10146488,
+    "TraderId": "mystake-35954954",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T10:39:04"
+  },
+  {
+    "id": 10146491,
+    "TraderId": "mystake-35954967",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T10:47:10"
+  },
+  {
+    "id": 10146494,
+    "TraderId": "mystake-35955076",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T11:03:01"
+  },
+  {
+    "id": 10146505,
+    "TraderId": "mystake-35955430",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T11:51:11"
+  },
+  {
+    "id": 10146509,
+    "TraderId": "mystake-35955520",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T12:07:05"
+  },
+  {
+    "id": 10146523,
+    "TraderId": "mystake-35955595",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T12:23:06"
+  },
+  {
+    "id": 10146529,
+    "TraderId": "mystake-35955784",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T12:47:05"
+  },
+  {
+    "id": 10146530,
+    "TraderId": "mystake-35955854",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T12:47:05"
+  },
+  {
+    "id": 10146555,
+    "TraderId": "mystake-35956545",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T14:15:05"
+  },
+  {
+    "id": 10146591,
+    "TraderId": "mystake-35957122",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T15:29:17"
+  },
+  {
+    "id": 10146604,
+    "TraderId": "mystake-35957325",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T16:01:45"
+  },
+  {
+    "id": 10146607,
+    "TraderId": "mystake-35957445",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T16:11:46"
+  },
+  {
+    "id": 10146618,
+    "TraderId": "mystake-35957676",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T16:37:28"
+  },
+  {
+    "id": 10146631,
+    "TraderId": "mystake-35958021",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T17:27:24"
+  },
+  {
+    "id": 10146638,
+    "TraderId": "mystake-35958114",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T17:43:32"
+  },
+  {
+    "id": 10146645,
+    "TraderId": "mystake-35958222",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T17:51:20"
+  },
+  {
+    "id": 10146661,
+    "TraderId": "mystake-35958567",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T18:35:14"
+  },
+  {
+    "id": 10146666,
+    "TraderId": "mystake-35958719",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T18:51:14"
+  },
+  {
+    "id": 10146669,
+    "TraderId": "mystake-35958975",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T19:23:21"
+  },
+  {
+    "id": 10146565,
+    "TraderId": "mystake-35956397",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T14:31:09"
+  },
+  {
+    "id": 10146601,
+    "TraderId": "mystake-35957288",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T15:53:18"
+  },
+  {
+    "id": 10146639,
+    "TraderId": "mystake-35958122",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T17:43:32"
+  },
+  {
+    "id": 10146583,
+    "TraderId": "mystake-35957054",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T15:21:19"
+  },
+  {
+    "id": 10139929,
+    "TraderId": "mystake-35953081",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T04:39:13"
+  },
+  {
+    "id": 10139936,
+    "TraderId": "mystake-35953424",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T05:51:13"
+  },
+  {
+    "id": 10146457,
+    "TraderId": "mystake-35954140",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T08:25:10"
+  },
+  {
+    "id": 10146495,
+    "TraderId": "mystake-35955102",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T11:03:01"
+  },
+  {
+    "id": 10146502,
+    "TraderId": "mystake-35955336",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T11:35:13"
+  },
+  {
+    "id": 10146513,
+    "TraderId": "mystake-35955557",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T12:15:44"
+  },
+  {
+    "id": 10146528,
+    "TraderId": "mystake-35955788",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T12:39:37"
+  },
+  {
+    "id": 10146616,
+    "TraderId": "mystake-35957617",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T16:29:15"
+  },
+  {
+    "id": 10146628,
+    "TraderId": "mystake-35957852",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T17:03:04"
+  },
+  {
+    "id": 10146646,
+    "TraderId": "mystake-35958294",
+    "afp": "Organic",
+    "TrackingCode": "zlex",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T17:59:24"
+  },
+  {
+    "id": 10146648,
+    "TraderId": "mystake-35958354",
+    "afp": "Organic",
+    "TrackingCode": "zchapv",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T18:07:31"
+  },
+  {
+    "id": 10146554,
+    "TraderId": "mystake-35956406",
+    "afp": "Organic",
+    "TrackingCode": "zfeel",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T14:15:05"
+  },
+  {
+    "id": 10146625,
+    "TraderId": "mystake-35957773",
+    "afp": "Organic",
+    "TrackingCode": "zfeel",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T16:55:24"
+  },
+  {
+    "id": 10146636,
+    "TraderId": "mystake-35958054",
+    "afp": "Organic",
+    "TrackingCode": "zfeel",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T17:43:29"
+  },
+  {
+    "id": 10146472,
+    "TraderId": "mystake-35954594",
+    "afp": "Organic",
+    "TrackingCode": "zfeel",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T09:49:23"
+  },
+  {
+    "id": 10146568,
+    "TraderId": "mystake-35956730",
+    "afp": "Organic",
+    "TrackingCode": "zlite",
+    "CommissionType": "CPA",
+    "Commission": 45,
+    "created": "2025-10-29T14:39:05"
+  }
+]
