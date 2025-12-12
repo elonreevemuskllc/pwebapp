@@ -9,11 +9,15 @@ import { getApiBaseUrl } from '../config/api';
  */
 export const buildApiUrl = (endpoint: string): string => {
 	const baseUrl = getApiBaseUrl();
-	// Nettoyer la base URL : enlever les backticks et autres caractères invalides
-	let cleanBase = (baseUrl || '').toString().replace(/[`'"]/g, '').trim();
 	
-	// Si la base contient encore des backticks après nettoyage, la vider complètement
-	if (cleanBase.includes('`') || cleanBase === '``' || cleanBase === '%60%60') {
+	// Convertir en string et nettoyer agressivement
+	let cleanBase = String(baseUrl || '');
+	
+	// Nettoyer les backticks, guillemets, et l'encodage %60
+	cleanBase = cleanBase.replace(/[`'"]/g, '').replace(/%60/g, '').trim();
+	
+	// Si la base contient encore des caractères invalides, la vider complètement
+	if (cleanBase === '' || cleanBase === '``' || cleanBase === '%60%60' || cleanBase.includes('`') || cleanBase.includes('%60')) {
 		cleanBase = '';
 	}
 	
