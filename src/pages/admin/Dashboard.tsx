@@ -3,10 +3,11 @@ import { motion } from 'framer-motion';
 import Navbar from '../../components/Navbar';
 import { useAuth } from '../../hooks/useAuth';
 import { getNavItems } from '../../config/navigation';
-import { TrendingUp, Users, DollarSign, TrendingDown, Activity, KeyRound, ArrowUpDown, ArrowUp, ArrowDown } from 'lucide-react';
+import { TrendingUp, Users, DollarSign, TrendingDown, Activity, KeyRound, ArrowUpDown, ArrowUp, ArrowDown, Bell } from 'lucide-react';
 import { useTranslation } from '../../hooks/useTranslation';
 import { toast } from 'sonner';
 import Modal from '../../components/Modal';
+import { useNotifications } from '../../hooks/useNotifications';
 
 interface AffiliateStats {
 	userId: number;
@@ -34,6 +35,7 @@ type SortDirection = 'asc' | 'desc' | null;
 
 export default function AdminDashboard() {
 	const { user, loading, logout } = useAuth();
+	const { isSupported, requestPermission, isGranted } = useNotifications();
 	const [stats, setStats] = useState<AdminStats | null>(null);
 	const [loadingStats, setLoadingStats] = useState(true);
 	const [period, setPeriod] = useState<PeriodType>('today');
@@ -242,21 +244,68 @@ export default function AdminDashboard() {
 
 			<div className="relative pt-24 px-4 pb-12">
 				<div className="max-w-7xl mx-auto py-8">
+					{!isGranted && (
+						<motion.div
+							initial={{ opacity: 0, y: -10 }}
+							animate={{ opacity: 1, y: 0 }}
+							className={`${isSupported ? 'bg-blue-500/10 border-blue-500/30' : 'bg-yellow-500/10 border-yellow-500/30'} border rounded-xl p-4 mb-6`}
+						>
+							<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+								<div className="flex items-center gap-3">
+									<Bell className={`w-5 h-5 ${isSupported ? 'text-blue-500' : 'text-yellow-500'} flex-shrink-0`} />
+									<div>
+										<h3 className="font-semibold text-foreground">Activer les notifications</h3>
+										<p className="text-sm text-muted-foreground">
+											{isSupported 
+												? 'Recevez des alertes pour les paiements et les mises à jour importantes'
+												: 'Les notifications nécessitent une connexion HTTPS (SSL) pour fonctionner. Le site doit être sécurisé.'
+											}
+										</p>
+									</div>
+								</div>
+								<button
+									onClick={requestPermission}
+									className={`px-4 py-2 ${isSupported ? 'bg-blue-500 hover:bg-blue-600' : 'bg-yellow-500 hover:bg-yellow-600'} text-white rounded-lg transition-colors font-medium whitespace-nowrap w-full sm:w-auto`}
+								>
+									Activer
+								</button>
+							</div>
+						</motion.div>
+					)}
+
+					{isGranted && (
+						<motion.div
+							initial={{ opacity: 0, y: -10 }}
+							animate={{ opacity: 1, y: 0 }}
+							className="bg-green-500/10 border border-green-500/30 rounded-xl p-4 mb-6"
+						>
+							<div className="flex items-center gap-3">
+								<Bell className="w-5 h-5 text-green-500" />
+								<div>
+									<h3 className="font-semibold text-foreground">Notifications activées</h3>
+									<p className="text-sm text-muted-foreground">
+										Vous recevrez des alertes pour les paiements et les mises à jour importantes
+									</p>
+								</div>
+							</div>
+						</motion.div>
+					)}
+
 					<motion.div
 						initial={{ opacity: 0, y: -20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.6 }}
-						className="mb-8 flex justify-between items-center"
+						className="mb-8 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4"
 					>
 						<div>
-							<h1 className="text-4xl font-bold text-foreground">{t('adminDashboard.title')}</h1>
+							<h1 className="text-3xl sm:text-4xl font-bold text-foreground">{t('adminDashboard.title')}</h1>
 							<p className="text-muted-foreground mt-2">{t('adminDashboard.description')}</p>
 						</div>
 						<motion.button
 							whileHover={{ scale: 1.05 }}
 							whileTap={{ scale: 0.95 }}
 							onClick={() => setShowPasswordModal(true)}
-							className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
+							className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity w-full sm:w-auto justify-center"
 						>
 							<KeyRound className="w-4 h-4" />
 							<span>Modifier mon mot de passe</span>

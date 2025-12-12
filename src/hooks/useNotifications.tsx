@@ -6,7 +6,11 @@ export function useNotifications() {
 	const [isSupported, setIsSupported] = useState(false);
 
 	useEffect(() => {
-		if ('Notification' in window && 'serviceWorker' in navigator) {
+		const hasNotificationAPI = 'Notification' in window;
+		const hasServiceWorker = 'serviceWorker' in navigator;
+		const isSecureContext = window.isSecureContext || location.protocol === 'https:' || location.hostname === 'localhost';
+		
+		if (hasNotificationAPI && hasServiceWorker && isSecureContext) {
 			setIsSupported(true);
 			setPermission(Notification.permission);
 		}
@@ -14,7 +18,12 @@ export function useNotifications() {
 
 	const requestPermission = async (): Promise<boolean> => {
 		if (!isSupported) {
-			toast.error('Les notifications ne sont pas supportées sur ce navigateur');
+			const isSecureContext = window.isSecureContext || location.protocol === 'https:' || location.hostname === 'localhost';
+			if (!isSecureContext) {
+				toast.error('Les notifications nécessitent une connexion HTTPS (SSL) pour fonctionner');
+			} else {
+				toast.error('Les notifications ne sont pas supportées sur ce navigateur');
+			}
 			return false;
 		}
 
