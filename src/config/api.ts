@@ -2,7 +2,10 @@
 // Utilise la variable d'environnement VITE_API_URL ou une valeur par défaut
 // Gère le cas où la variable est undefined (problème Netlify)
 // En production (Netlify), utilise le proxy pour éviter Mixed Content
-const getApiUrlFromEnv = (): string => {
+
+// Fonction pour obtenir l'URL de l'API
+// Cette fonction doit être utilisée partout au lieu de import.meta.env.VITE_API_URL
+export const getApiBaseUrl = (): string => {
 	const envUrl = import.meta.env.VITE_API_URL;
 	
 	// Si chaîne vide (production Netlify), utiliser l'origine actuelle (proxy)
@@ -20,7 +23,8 @@ const getApiUrlFromEnv = (): string => {
 	return envUrl;
 };
 
-export const API_URL = getApiUrlFromEnv();
+// URL de base de l'API (pour compatibilité)
+export const API_URL = getApiBaseUrl();
 
 // Fonction helper pour construire les URLs API
 export const getApiUrl = (endpoint: string): string => {
